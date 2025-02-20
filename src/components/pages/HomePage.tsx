@@ -12,6 +12,7 @@ const HomePage = () => {
     "Ascending Priority",
     "Descending Priority",
   ];
+
   // TODO: category list is going to be worked on tags
   const cetgoryList: Array<string> = ["item1", "item2", "item3"];
 

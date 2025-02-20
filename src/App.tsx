@@ -1,10 +1,11 @@
-import Home from "./components/pages/Home";
+import Layout from "./components/templates/Layout.tsx";
+import HomePage from "./components/pages/HomePage.tsx";
 
 function App() {
   return (
-    <div className="w-screen h-screen bg-gray-100">
-      <Home />
-    </div>
+    <Layout>
+      <HomePage />
+    </Layout>
   );
 }
 

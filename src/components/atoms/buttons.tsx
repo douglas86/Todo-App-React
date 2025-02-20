@@ -12,7 +12,7 @@ export const submitButton = (text: ReactNode | string) => (
 /**
  * This button is used for adding or repeating tasks
  * @param text - what wording you want on the button
- * @param symbol - one of two strings new or repeat
+ * @param symbol - symbol to be show infront of a text on button
  */
 export const taskButton = (text: string, symbol: "new" | "repeat") => {
   return (

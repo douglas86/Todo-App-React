@@ -3,7 +3,16 @@ import DropdownList from "../molecule/DropdownList.tsx";
 import { taskButton } from "../atoms/buttons.tsx";
 
 const HomePage = () => {
-  const sortList: Array<string> = ["item1", "item2", "item3"];
+  const sortList: Array<string> = [
+    "Default",
+    "Ascending Date",
+    "Descending Date",
+    "Ascending complexity",
+    "Descending Complexity",
+    "Ascending Priority",
+    "Descending Priority",
+  ];
+  // TODO: category list is going to be worked on tags
   const cetgoryList: Array<string> = ["item1", "item2", "item3"];
 
   return (

@@ -1,6 +1,6 @@
 import SearchBar from "../molecule/SearchBar.tsx";
 import DropdownList from "../molecule/DropdownList.tsx";
-import { taskButton } from "../atoms/elements.tsx";
+import { taskButton } from "../atoms/buttons.tsx";
 
 const HomePage = () => {
   const sortList: Array<string> = ["item1", "item2", "item3"];

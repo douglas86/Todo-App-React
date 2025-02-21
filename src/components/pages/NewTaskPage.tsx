@@ -1,9 +1,7 @@
+import { pageTitle } from "../atoms/elements.tsx";
+
 const NewTaskPage = () => {
-  return (
-    <div>
-      <h1>New Task</h1>
-    </div>
-  );
+  return <div>{pageTitle("Add New Task")}</div>;
 };
 
 export default NewTaskPage;

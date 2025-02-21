@@ -1,3 +1,11 @@
+import { IoAddCircleOutline } from "react-icons/io5";
+import { BsArrowRepeat } from "react-icons/bs";
+import { FaRegSave } from "react-icons/fa";
+
+export const addIcon = <IoAddCircleOutline className="scale-120 w-6 h-6" />;
+
+export const repeatIcon = <BsArrowRepeat className="scale-120 w-6 h-6" />;
+
 export const rightArrowIcon = () => {
   return (
     <div className="pl-3">
@@ -18,6 +26,8 @@ export const rightArrowIcon = () => {
     </div>
   );
 };
+
+export const saveIcon = <FaRegSave className="scale-120 w-6 h-6" />;
 
 export const searchIcon = () => {
   return (

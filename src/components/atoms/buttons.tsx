@@ -1,6 +1,24 @@
 import { ReactNode } from "react";
 import { addIcon, repeatIcon, saveIcon } from "./icons.tsx";
 
+/**
+ * This button is completely round passing in the size
+ * @param size - size of button in width and height
+ * @param text - add text or symbol
+ * @param backgroundColorGradient - color of the background of the button
+ */
+export const roundButton = (
+  size: number,
+  text: ReactNode | string,
+  backgroundColorGradient?: string,
+) => (
+  <button
+    className={`w-${size} h-${size} rounded-full mr-4 border bg-${backgroundColorGradient}`}
+  >
+    {text}
+  </button>
+);
+
 export const submitButton = (text: ReactNode | string) => (
   <button
     className="p-2 bg-blue-100 hover:bg-blue-200 rounded-r-lg border-l border-slate-300"

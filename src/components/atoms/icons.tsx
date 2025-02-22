@@ -1,6 +1,6 @@
 import { IoAddCircleOutline } from "react-icons/io5";
 import { BsArrowRepeat } from "react-icons/bs";
-import { FaRegSave } from "react-icons/fa";
+import { FaArrowRight, FaRegSave } from "react-icons/fa";
 
 export const addIcon = <IoAddCircleOutline className="scale-120 w-6 h-6" />;
 

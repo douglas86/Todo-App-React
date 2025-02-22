@@ -2,13 +2,9 @@
  * This is the page title that sits at the top of the page with the home button next to it
  * @param title
  */
-export const pageTitle = (title: string) => {
-  return (
-    <>
-      <h1>{title}</h1>
-    </>
-  );
-};
+export const pageTitle = (title: string) => (
+  <h1 className="text-2xl lg:text-4xl">{title}</h1>
+);
 
 export const searchField = (placeholder = "Search") => (
   <input

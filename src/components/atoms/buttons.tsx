@@ -13,7 +13,7 @@ export const roundButton = (
   backgroundColorGradient?: string,
 ) => (
   <button
-    className={`w-${size} h-${size} rounded-full mr-4 border bg-${backgroundColorGradient}`}
+    className={`flex w-${size} h-${size} items-center justify-center rounded-full  mr-4 border bg-${backgroundColorGradient}`}
   >
     {text}
   </button>

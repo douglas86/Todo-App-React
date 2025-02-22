@@ -1,31 +1,18 @@
 import { IoAddCircleOutline } from "react-icons/io5";
 import { BsArrowRepeat } from "react-icons/bs";
-import { FaArrowRight, FaRegSave } from "react-icons/fa";
+import { FaArrowRight, FaArrowLeft, FaRegSave } from "react-icons/fa";
 
 export const addIcon = <IoAddCircleOutline className="scale-120 w-6 h-6" />;
 
 export const repeatIcon = <BsArrowRepeat className="scale-120 w-6 h-6" />;
 
-export const rightArrowIcon = () => {
-  return (
-    <div className="pl-3">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth={1.5}
-        stroke="currentColor"
-        className="size-5"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-        />
-      </svg>
-    </div>
-  );
-};
+export const leftArrowIcon = () => (
+  <FaArrowLeft className="scale-100 w-6 h-6" />
+);
+
+export const rightArrowIcon = () => (
+  <FaArrowRight className="scale-100 w-6 h-6" />
+);
 
 export const saveIcon = <FaRegSave className="scale-120 w-6 h-6" />;
 

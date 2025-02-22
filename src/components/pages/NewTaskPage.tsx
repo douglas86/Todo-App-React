@@ -1,11 +1,9 @@
-import { pageTitle } from "../atoms/elements.tsx";
-import { roundButton } from "../atoms/buttons.tsx";
+import PageHeader from "../organism/PageHeader.tsx";
 
 const NewTaskPage = () => {
   return (
     <div className="flex">
-      {roundButton(10, "e")}
-      {pageTitle("Add New Task")}
+      <PageHeader title="Add New Task" />
     </div>
   );
 };

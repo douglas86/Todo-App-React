@@ -1,3 +1,16 @@
+export const dateTime = (type: "date" | "time") => (
+  <div>
+    <label className="text-sm font-medium text-gray-700">
+      {type === "date" ? "Select Due Date" : "Select Time"}
+    </label>
+    <input
+      className="border rounded-lg w-50 h-10 m-4 p-4"
+      aria-label="Date and time"
+      type={type}
+    />
+  </div>
+);
+
 export const inputWithLabel = (text: string) => (
   <div className="relative mt-12 mb-5">
     <input

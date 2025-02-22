@@ -1,5 +1,5 @@
 export const inputWithLabel = (text: string) => (
-  <div className="relative mt-12">
+  <div className="relative mt-12 mb-5">
     <input
       type="text"
       className="peer w-full border-b placeholder:text-transparent"

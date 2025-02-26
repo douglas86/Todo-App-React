@@ -1,14 +1,15 @@
 import { IoAddCircleOutline } from "react-icons/io5";
 import { BsArrowRepeat } from "react-icons/bs";
 import { FaArrowRight, FaArrowLeft, FaRegSave } from "react-icons/fa";
+import { TiTick } from "react-icons/ti";
 
 export const addIcon = <IoAddCircleOutline className="scale-120 w-6 h-6" />;
-
-export const repeatIcon = <BsArrowRepeat className="scale-120 w-6 h-6" />;
 
 export const leftArrowIcon = () => (
   <FaArrowLeft className="scale-100 w-6 h-6" />
 );
+
+export const repeatIcon = <BsArrowRepeat className="scale-120 w-6 h-6" />;
 
 export const rightArrowIcon = () => (
   <FaArrowRight className="scale-100 w-6 h-6" />
@@ -34,3 +35,5 @@ export const searchIcon = () => {
     </div>
   );
 };
+
+export const tickIcon = () => <TiTick />;

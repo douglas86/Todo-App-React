@@ -2,6 +2,9 @@ import React, { useState } from "react";
 
 import PageHeader from "../organism/PageHeader.tsx";
 import Form from "../organism/Form";
+// import { deleteIcon } from "../atoms/icons.tsx";
+// import { roundButton } from "../atoms/buttons.tsx";
+import Checkbox from "../molecule/Checkbox.tsx";
 
 interface MyObject {
   id: number;
@@ -43,8 +46,8 @@ const NewTaskPage = () => {
       <PageHeader title="Add New Task" />
       <Form />
 
-      {handleCheckboxInput.map((item) => (
-        <p key={item.id}>{item.title}</p>
+      {handleCheckboxInput.map(({ id, title }) => (
+        <Checkbox key={id} placeholder={`${title}`} />
       ))}
 
       {/*checkbox*/}

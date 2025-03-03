@@ -1,9 +1,11 @@
 import { IoAddCircleOutline } from "react-icons/io5";
 import { BsArrowRepeat } from "react-icons/bs";
 import { FaArrowRight, FaArrowLeft, FaRegSave } from "react-icons/fa";
-import { TiTick } from "react-icons/ti";
+import { MdDeleteForever } from "react-icons/md";
 
 export const addIcon = <IoAddCircleOutline className="scale-120 w-6 h-6" />;
+
+export const deleteIcon = <MdDeleteForever className="scale-120 w-6 h-6" />;
 
 export const leftArrowIcon = () => (
   <FaArrowLeft className="scale-100 w-6 h-6" />
@@ -35,5 +37,3 @@ export const searchIcon = () => {
     </div>
   );
 };
-
-export const tickIcon = () => <TiTick />;

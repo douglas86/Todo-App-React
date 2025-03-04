@@ -1,18 +1,21 @@
-import { ReactNode } from "react";
+import { ReactNode, MouseEvent } from "react";
 import { addIcon, repeatIcon, saveIcon } from "./icons.tsx";
 
 /**
  * This button is completely round passing in the size
  * @param size - size of button in width and height
  * @param text - add text or symbol
- * @param backgroundColorGradient - color of the background of the button
+ * @param handleClick - click handler
+ * @param backgroundColorGradient - background color and the gradient
  */
 export const roundButton = (
   size: number,
   text: ReactNode | string,
+  handleClick: (e: MouseEvent<HTMLButtonElement>) => void,
   backgroundColorGradient?: string,
 ) => (
   <button
+    onClick={handleClick}
     className={`flex w-${size} h-${size} items-center justify-center rounded-full  mr-4 border bg-${backgroundColorGradient}`}
   >
     {text}

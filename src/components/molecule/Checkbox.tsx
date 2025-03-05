@@ -7,6 +7,7 @@ const Checkbox = ({ placeholder }: { placeholder: string }) => {
   const handleClick: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.preventDefault();
     console.log("I was clicked");
+    console.log("event", placeholder);
   };
 
   return (

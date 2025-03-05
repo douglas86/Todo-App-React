@@ -5,6 +5,7 @@ import Form from "../organism/Form";
 // import { deleteIcon } from "../atoms/icons.tsx";
 // import { roundButton } from "../atoms/buttons.tsx";
 import Checkbox from "../molecule/Checkbox.tsx";
+import useAppContext from "../../hooks/useAppContext.tsx";
 
 interface MyObject {
   id: number;
@@ -19,7 +20,10 @@ const NewTaskPage = () => {
     [],
   );
 
+  const { state } = useAppContext();
+
   console.log("handleCheckboxInput", handleCheckboxInput);
+  console.log("state", state);
 
   const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);

@@ -1,10 +1,10 @@
 import { createContext, Dispatch } from "react";
-import { StateType } from "./contextTypes.tsx";
+import { StateType, ActionType } from "./contextTypes.tsx";
 import { initialState } from "./initialState.tsx";
 
 interface ContextType {
   state: StateType;
-  dispatch: Dispatch<never>;
+  dispatch: Dispatch<ActionType>;
 }
 
 export const Context = createContext<ContextType>({

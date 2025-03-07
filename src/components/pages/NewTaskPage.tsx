@@ -21,13 +21,14 @@ const NewTaskPage = () => {
     [],
   );
 
-  const { state } = useAppContext();
+  const { state, dispatch } = useAppContext();
 
   console.log("handleCheckboxInput", handleCheckboxInput);
   console.log("state", state.checkboxReducer);
 
   const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
+    dispatch({ type: "CHECKBOX_INPUT", payload: e.target.value });
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {

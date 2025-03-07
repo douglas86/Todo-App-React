@@ -1,10 +1,7 @@
-interface ActionType {
-  type: string;
-  payload?: unknown;
-}
+import { ActionType } from "./contextTypes.tsx";
 
 interface RootState {
-  checkboxReducer: { checked: boolean; input: string };
+  checkboxReducer: { input: string };
 }
 
 export type Reducer<S> = (state: S, action: ActionType) => S;

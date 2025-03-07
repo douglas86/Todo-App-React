@@ -14,8 +14,9 @@ interface MyObject {
 }
 
 const NewTaskPage = () => {
+  // state for storing the input onChange events
   const [inputValue, setInputValue] = useState<string>("");
-  // const handleCheckItems: { title: string; checked: boolean }[] = [];
+
   const [handleCheckboxInput, setHandleCheckboxInput] = useState<MyObject[]>(
     [],
   );
@@ -23,7 +24,7 @@ const NewTaskPage = () => {
   const { state } = useAppContext();
 
   console.log("handleCheckboxInput", handleCheckboxInput);
-  console.log("state", state);
+  console.log("state", state.checkboxReducer);
 
   const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);

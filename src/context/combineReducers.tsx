@@ -4,7 +4,7 @@ interface ActionType {
 }
 
 interface RootState {
-  checkboxReducer: { checked: boolean };
+  checkboxReducer: { checked: boolean; input: string };
 }
 
 export type Reducer<S> = (state: S, action: ActionType) => S;

@@ -1,10 +1,16 @@
 import { Reducer } from "./combineReducers.tsx";
 
-export const checkboxReducer: Reducer<{ checked: boolean }> = (
-  state,
-  action,
-) => {
-  switch (action.type) {
+type CheckboxState = {
+  checked: boolean;
+  input: string;
+};
+
+export const checkboxReducer: Reducer<CheckboxState> = (state, action) => {
+  const { type, payload } = action;
+
+  switch (type) {
+    case "checkboxInput":
+      return { ...state, input: payload as string };
     case "TOGGLE_CHECK":
       return { ...state, checked: !state.checked };
     default:

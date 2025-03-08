@@ -1,33 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 
 import PageHeader from "../organism/PageHeader.tsx";
 import Form from "../organism/Form";
-// import { deleteIcon } from "../atoms/icons.tsx";
-// import { roundButton } from "../atoms/buttons.tsx";
 import Checkbox from "../molecule/Checkbox.tsx";
 import useAppContext from "../../hooks/useAppContext.tsx";
 
-interface MyObject {
-  id: number;
-  title: string;
-  checked: boolean;
-}
-
 const NewTaskPage = () => {
-  // state for storing the input onChange events
-  const [inputValue, setInputValue] = useState<string>("");
-
-  const [handleCheckboxInput, setHandleCheckboxInput] = useState<MyObject[]>(
-    [],
-  );
-
   const { state, dispatch } = useAppContext();
 
-  console.log("handleCheckboxInput", handleCheckboxInput);
   console.log("state", state.checkboxReducer);
 
   const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
     dispatch({ type: "CHECKBOX_INPUT", payload: e.target.value });
   };
 
@@ -35,15 +18,6 @@ const NewTaskPage = () => {
     // only when enter is performed then save input data
     if (e.key === "Enter") {
       e.preventDefault();
-      setHandleCheckboxInput([
-        ...handleCheckboxInput,
-        {
-          id: handleCheckboxInput.length + 1,
-          title: inputValue,
-          checked: false,
-        },
-      ]);
-      setInputValue("");
       dispatch({
         type: "ADD_CHECKBOX_INPUT",
         payload: state.checkboxReducer.input,
@@ -57,8 +31,9 @@ const NewTaskPage = () => {
       <PageHeader title="Add New Task" />
       <Form />
 
-      {handleCheckboxInput.map(({ id, title }) => (
-        <Checkbox key={id} placeholder={`${title}`} />
+      {/*display items in an item array*/}
+      {state.checkboxReducer.items.map((item, index) => (
+        <Checkbox key={index} placeholder={`${item}`} />
       ))}
 
       {/*checkbox*/}
@@ -66,7 +41,7 @@ const NewTaskPage = () => {
         <input
           type={"text"}
           className={"w-full border-b rounded-full"}
-          value={`${inputValue}`}
+          value={`${state.checkboxReducer.input}`}
           placeholder={"Add task - Hit enter once done"}
           onChange={handleSubmit}
           onKeyDown={handleKeyDown}

@@ -2,12 +2,14 @@ import { deleteIcon } from "../atoms/icons.tsx";
 import { searchField } from "../atoms/elements.tsx";
 import { roundButton } from "../atoms/buttons.tsx";
 import { MouseEventHandler } from "react";
+import useAppContext from "../../hooks/useAppContext.tsx";
 
 const Checkbox = ({ placeholder }: { placeholder: string }) => {
+  const { dispatch } = useAppContext();
+
   const handleClick: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.preventDefault();
-    console.log("I was clicked");
-    console.log("event", placeholder);
+    dispatch({ type: "DELETE_ITEM_FROM_ITEMS_ARRAY", payload: placeholder });
   };
 
   return (

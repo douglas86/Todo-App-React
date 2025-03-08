@@ -8,6 +8,8 @@ export const checkboxReducer: Reducer<CheckboxState> = (state, action) => {
   switch (action.type) {
     case "CHECKBOX_INPUT":
       return { ...state, input: action.payload as string };
+    case "CLEAR_CHECKBOX_INPUT":
+      return { ...state, input: "" };
     default:
       return state;
   }

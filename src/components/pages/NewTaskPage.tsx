@@ -44,6 +44,7 @@ const NewTaskPage = () => {
         },
       ]);
       setInputValue("");
+      dispatch({ type: "CLEAR_CHECKBOX_INPUT" });
     }
   };
 

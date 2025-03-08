@@ -32,9 +32,12 @@ export const pageTitle = (title: string) => (
   <h1 className="text-2xl lg:text-4xl">{title}</h1>
 );
 
-export const searchField = (placeholder = "Search") => (
+export const searchField = (
+  placeholder = "Search",
+  placeholderColorText?: string,
+) => (
   <input
-    className="flex-1 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm px-3 py-2 focus:outline-none"
+    className={`flex-1 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm px-3 py-2 focus:outline-none ${placeholderColorText}`}
     placeholder={placeholder}
   />
 );

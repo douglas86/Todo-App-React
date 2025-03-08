@@ -7,5 +7,5 @@ export interface StateType {
 }
 
 export type ActionType =
-  | { type: "CHECKBOX_INPUT"; payload: string }
-  | { type: "TOGGLE_CHECKBOX" }; // this one I can delete when I have more types, its example for now
+  | { type: "CHECKBOX_INPUT"; payload: string } // update the input as you type
+  | { type: "CLEAR_CHECKBOX_INPUT" }; // clears the input once enter is pressed in an input element

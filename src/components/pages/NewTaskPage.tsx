@@ -44,6 +44,10 @@ const NewTaskPage = () => {
         },
       ]);
       setInputValue("");
+      dispatch({
+        type: "ADD_CHECKBOX_INPUT",
+        payload: state.checkboxReducer.input,
+      });
       dispatch({ type: "CLEAR_CHECKBOX_INPUT" });
     }
   };

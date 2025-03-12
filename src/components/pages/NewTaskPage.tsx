@@ -44,7 +44,12 @@ const NewTaskPage = () => {
       {/*show items in an array if items array not empty*/}
       {state.checkboxReducer.items &&
       state.checkboxReducer.items.length === 0 ? (
-        <p>Array empty</p>
+        <>
+          <h1>Add Checklist for Subtasks</h1>
+          <p className={`text-center uppercase font-bold mt-1`}>
+            There are no tasks to display
+          </p>
+        </>
       ) : (
         state.checkboxReducer.items.map((item, index) => (
           <Checkbox key={index} placeholder={`${item}`} />

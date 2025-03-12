@@ -30,15 +30,26 @@ const NewTaskPage = () => {
     }
   };
 
+  // TODO: add locic to display message if no items in array
+  // TODO: isolate the context data for checkbox
+  // TODO: as the data for form is completed then store state to localStorage
+  // TODO: use custom hook for storing to local storage
+
   return (
     <div className="sm:w-120 md:w-150 lg:w-200">
       <PageHeader title="Add New Task" />
       <Form />
 
-      {/*display items in an item array*/}
-      {state.checkboxReducer.items.map((item, index) => (
-        <Checkbox key={index} placeholder={`${item}`} />
-      ))}
+      {/*show a message if not items in an array*/}
+      {/*show items in an array if items array not empty*/}
+      {state.checkboxReducer.items &&
+      state.checkboxReducer.items.length === 0 ? (
+        <p>Array empty</p>
+      ) : (
+        state.checkboxReducer.items.map((item, index) => (
+          <Checkbox key={index} placeholder={`${item}`} />
+        ))
+      )}
 
       {/*checkbox*/}
       <div className={"relative mt-12 mb-5"}>
@@ -50,6 +61,7 @@ const NewTaskPage = () => {
           onChange={handleSubmit}
           onKeyDown={handleKeyDown}
         />
+        {/*form validation to stop duplicate items in an array*/}
         {findItemInArray(state.checkboxReducer.input) && (
           <p className={`text-red-400 font-bold text-center p-2`}>
             Please add another item this has been added already!

@@ -18,7 +18,10 @@ export const checkboxReducer: Reducer<CheckboxState> = (state, action) => {
       return { ...state, items: [...state.items, action.payload] };
     case "DELETE_ITEM_FROM_ITEMS_ARRAY":
       delete state.items[findIndex(action.payload)];
-      return { ...state };
+      return {
+        ...state,
+        items: state.items.filter((item) => item !== "undefined"),
+      };
     default:
       return state;
   }

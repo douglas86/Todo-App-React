@@ -1,5 +1,5 @@
 import { roundButton } from "../atoms/buttons.tsx";
-import { crossIcon, tickIcon } from "../atoms/icons.tsx";
+import { crossIcon, deleteIcon, tickIcon } from "../atoms/icons.tsx";
 
 interface CheckboxItemProps {
   checkbox: { id: number; label: string; checked: boolean };
@@ -11,12 +11,19 @@ const CheckboxItem = ({ checkbox, onToggle, onDelete }: CheckboxItemProps) => {
   const handleClick = () => onToggle();
 
   return (
-    <li className={`flex p-2`}>
-      {checkbox.checked
-        ? roundButton(10, tickIcon, handleClick, "green-400")
-        : roundButton(10, crossIcon, handleClick, "sky-400")}
-      <label>{checkbox.label}</label>
-      <button onClick={onDelete}>Delete</button>
+    <li
+      className={`flex w-[80%] items-center mx-auto border border-slate-500 rounded-full shadow-sm focus-within:border-slate-500 py-1 m-2 bg-white`}
+    >
+      <div className="flex justify-center w-[10%] p-1">
+        {checkbox.checked
+          ? roundButton(8, tickIcon, handleClick, "green-400")
+          : roundButton(8, crossIcon, handleClick, "sky-400")}
+      </div>
+
+      <label className="w-[80%]">{checkbox.label}</label>
+      <div className="flex justify-center w-[10%]">
+        {roundButton(8, deleteIcon, onDelete, "red-400")}
+      </div>
     </li>
   );
 };

@@ -70,6 +70,13 @@ const CheckboxList = () => {
         onChange={handleSubmit}
         onKeyDown={handleKeyDown}
       />
+
+      {/*form validation when item already exists*/}
+      {findItemInArray(input) && (
+        <p className={`text-red-400 font-bold text-center py-2 px-3`}>
+          Please add another item this has been added already!
+        </p>
+      )}
     </div>
   );
 };

@@ -20,7 +20,7 @@ const CheckboxItem = ({ checkbox, onToggle, onDelete }: CheckboxItemProps) => {
           : roundButton(8, crossIcon, handleClick, "sky-400")}
       </div>
 
-      <label className="w-[80%]">{checkbox.label}</label>
+      <label className="w-[80%] capitalize">{checkbox.label}</label>
       <div className="flex justify-center w-[10%]">
         {roundButton(8, deleteIcon, onDelete, "red-400")}
       </div>

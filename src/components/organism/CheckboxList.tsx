@@ -50,18 +50,25 @@ const CheckboxList = () => {
 
   return (
     <div>
-      <h2>Dynamic Checkboxes</h2>
-      <ul>
-        {checkboxes.map((checkbox) => (
-          <CheckboxItem
-            key={checkbox.id}
-            checkbox={checkbox}
-            onToggle={() => toggleCheckbox(checkbox.id)}
-            onDelete={() => removeCheckbox(checkbox.id)}
-          />
-        ))}
-      </ul>
+      <h2>Add Checklist for subtasks</h2>
+      {checkboxes.length > 0 ? (
+        <ul>
+          {checkboxes.map((checkbox) => (
+            <CheckboxItem
+              key={checkbox.id}
+              checkbox={checkbox}
+              onToggle={() => toggleCheckbox(checkbox.id)}
+              onDelete={() => removeCheckbox(checkbox.id)}
+            />
+          ))}
+        </ul>
+      ) : (
+        <p className={`capitalize text-center text-red-400 font-bold p-3`}>
+          There are no items to display
+        </p>
+      )}
 
+      {/*add new items to a checkbox list*/}
       <input
         type={"text"}
         className={"w-full border-b rounded-full"}

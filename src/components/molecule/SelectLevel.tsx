@@ -4,7 +4,7 @@ import { MouseEventHandler } from "react";
 const SelectLevel = ({ description }: { description: string }) => {
   const handleClick: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.preventDefault();
-    console.log("I was clicked");
+    console.log("I was clicked", event.target.name);
   };
 
   return (

@@ -17,6 +17,7 @@ export const roundButton = (
   <button
     onClick={handleClick}
     className={`flex w-${size} h-${size} items-center justify-center rounded-full  mr-4 border bg-${backgroundColorGradient}`}
+    name={`${text}`}
   >
     {text}
   </button>

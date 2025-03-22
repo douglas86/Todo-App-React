@@ -4,8 +4,15 @@ import CheckboxList from "../organism/CheckboxList.tsx";
 import LevelSelection from "../organism/LevelSelection.tsx";
 import { dateTime, inputWithLabel } from "../atoms/elements.tsx";
 import { taskButton } from "../atoms/buttons.tsx";
+import { useEffect } from "react";
 
 const NewTaskPage = () => {
+  const session = localStorage.getItem("session");
+
+  useEffect(() => {
+    sessionStorage.setItem("session", JSON.stringify({}));
+  }, [session]);
+
   return (
     <div className="sm:w-120 md:w-150 lg:w-200">
       <PageHeader title="Add New Task" />

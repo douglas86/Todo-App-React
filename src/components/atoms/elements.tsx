@@ -1,3 +1,5 @@
+import { ChangeEventHandler } from "react";
+
 export const dateTime = (type: "date" | "time") => (
   <div>
     <label className="text-sm font-medium text-gray-700">
@@ -11,11 +13,15 @@ export const dateTime = (type: "date" | "time") => (
   </div>
 );
 
-export const inputWithLabel = (text: string) => (
+export const inputWithLabel = (
+  text: string,
+  handleClick: ChangeEventHandler<HTMLInputElement>,
+) => (
   <div className="relative mt-12 mb-5">
     <input
       type="text"
       className="peer w-full border-b rounded-full placeholder:text-transparent"
+      onChange={handleClick}
       placeholder={text}
     />
     <label className="absolute left-2 ml-1 bg-gray-100 font-bold -translate-y-8 px-1 text-lg duration-100 ease-linear peer-placeholder-shown:translate-y-0 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:ml-20 peer-focus:-translate-y-8 peer-focus:px-1 peer-focus:text-lg">

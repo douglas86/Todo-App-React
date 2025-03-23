@@ -6,6 +6,13 @@ const LevelSelection = ({ description }: { description: string }) => {
 
   const handleClick = (num: number) => {
     setNumber(num);
+    const level = { [description]: num };
+    const existing = sessionStorage.getItem("session");
+    const sessionTask = existing ? JSON.parse(existing) : {};
+
+    const storingLevel = { ...sessionTask, ...level };
+
+    sessionStorage.setItem("session", JSON.stringify(storingLevel));
   };
 
   return (

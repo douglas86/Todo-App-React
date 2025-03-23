@@ -5,8 +5,8 @@ import { taskButton } from "../atoms/buttons.tsx";
 import { ChangeEvent } from "react";
 
 const Form = () => {
-  // save tasks to session storage
-  const newTask = (event: ChangeEvent<HTMLInputElement>) => {
+  // save task name to session storage
+  const taskName = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     const newTask = { newTask: event.target.value };
     const existing = sessionStorage.getItem("session");
@@ -18,7 +18,7 @@ const Form = () => {
   };
 
   // save tags to session storage
-  const newTags = (event: ChangeEvent<HTMLInputElement>) => {
+  const tags = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     const newTags = { newTags: event.target.value };
     const existing = sessionStorage.getItem("session");
@@ -31,7 +31,7 @@ const Form = () => {
 
   return (
     <form>
-      {inputWithLabel("Task Name", newTask)}
+      {inputWithLabel("Task Name", taskName)}
 
       <LevelSelection description={"Priority"} />
       <LevelSelection description={"Complexity"} />
@@ -43,7 +43,7 @@ const Form = () => {
 
       <CheckboxList />
 
-      {inputWithLabel("Add Tags", newTags)}
+      {inputWithLabel("Add Tags", tags)}
       {taskButton("Save Task", "save")}
     </form>
   );

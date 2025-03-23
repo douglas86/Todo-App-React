@@ -5,14 +5,28 @@ import { taskButton } from "../atoms/buttons.tsx";
 import { ChangeEvent } from "react";
 
 const Form = () => {
+  // save tasks to session storage
   const newTask = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
-    console.log("event", event.target.value);
+    const newTask = { newTask: event.target.value };
+    const existing = sessionStorage.getItem("session");
+    const sessionTask = existing ? JSON.parse(existing) : {};
+
+    const storingTask = { ...sessionTask, ...newTask };
+
+    sessionStorage.setItem("session", JSON.stringify(storingTask));
   };
 
+  // save tags to session storage
   const newTags = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
-    console.log("event", event.target.value);
+    const newTags = { newTags: event.target.value };
+    const existing = sessionStorage.getItem("session");
+    const sessionTask = existing ? JSON.parse(existing) : {};
+
+    const storingTask = { ...sessionTask, ...newTags };
+
+    sessionStorage.setItem("session", JSON.stringify(storingTask));
   };
 
   return (

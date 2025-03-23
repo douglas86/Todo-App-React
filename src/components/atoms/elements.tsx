@@ -1,17 +1,30 @@
-import { ChangeEventHandler } from "react";
+import { ChangeEvent, ChangeEventHandler } from "react";
 
-export const dateTime = (type: "date" | "time") => (
-  <div>
-    <label className="text-sm font-medium text-gray-700">
-      {type === "date" ? "Select Due Date" : "Select Time"}
-    </label>
-    <input
-      className="border rounded-lg w-50 h-10 m-4 p-4"
-      aria-label="Date and time"
-      type={type}
-    />
-  </div>
-);
+export const dateTime = (type: "date" | "time") => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const newValue = { [type]: event.target.value };
+    const existing = sessionStorage.getItem("session");
+    const dateTimeSession = existing ? JSON.parse(existing) : {};
+
+    const storing = { ...dateTimeSession, ...newValue };
+
+    sessionStorage.setItem("session", JSON.stringify(storing));
+  };
+
+  return (
+    <div>
+      <label className="text-sm font-medium text-gray-700">
+        {type === "date" ? "Select Due Date" : "Select Time"}
+      </label>
+      <input
+        type={type}
+        className="border rounded-lg w-50 h-10 m-4 p-4"
+        aria-label="Date and time"
+        onChange={handleChange}
+      />
+    </div>
+  );
+};
 
 export const inputWithLabel = (
   text: string,

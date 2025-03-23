@@ -1,8 +1,9 @@
-import { dateTime, inputWithLabel } from "../atoms/elements.tsx";
+import { ChangeEvent } from "react";
+
 import LevelSelection from "./LevelSelection.tsx";
 import CheckboxList from "./CheckboxList.tsx";
+import { dateTime, inputWithLabel } from "../atoms/elements.tsx";
 import { taskButton } from "../atoms/buttons.tsx";
-import { ChangeEvent } from "react";
 
 const Form = () => {
   // save task name to session storage

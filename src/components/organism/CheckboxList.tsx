@@ -44,8 +44,21 @@ const CheckboxList = () => {
         checked: false,
       };
       setCheckboxes([...checkboxes, newCheckbox]);
+
+      handleSessionStorage([...checkboxes, newCheckbox]);
+
       setInput("");
     }
+  };
+
+  const handleSessionStorage = (arr: Array<object>) => {
+    const checked = { checked: arr };
+    const existing = sessionStorage.getItem("session");
+    const sessionTask = existing ? JSON.parse(existing) : {};
+
+    const storingLevel = { ...sessionTask, ...checked };
+
+    sessionStorage.setItem("session", JSON.stringify(storingLevel));
   };
 
   return (

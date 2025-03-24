@@ -1,4 +1,4 @@
-import { ReactNode, MouseEvent } from "react";
+import { ReactNode, MouseEvent, MouseEventHandler } from "react";
 import { addIcon, repeatIcon, saveIcon } from "./icons.tsx";
 
 /**
@@ -37,17 +37,25 @@ export const submitButton = (text: ReactNode | string) => (
  * This button is used for adding or repeating tasks
  * @param text - what wording you want on the button
  * @param symbol - there is one of three symbols to be showen on the button new, repeat or save
+ * @param handleClick
  */
-export const taskButton = (text: string, symbol: "new" | "repeat" | "save") => {
+export const taskButton = (
+  text: string,
+  symbol: "new" | "repeat" | "save",
+  handleClick: MouseEventHandler<HTMLButtonElement>,
+) => {
   return (
     <a href={symbol !== "new" ? "/" : "/new-task"}>
-      <button className="flex space-x-3 w-75 m-auto justify-center items-center px-5 py-3 bg-indigo-500 hover:bg-indigo-800 rounded-full drop-shadow-md cursor-pointer duration-300">
+      <button
+        type="button"
+        className="flex space-x-3 w-75 m-auto justify-center items-center px-5 py-3 bg-indigo-500 hover:bg-indigo-800 rounded-full drop-shadow-md cursor-pointer duration-300"
+        onClick={handleClick}
+      >
         {symbol === "repeat"
           ? repeatIcon
           : symbol === "save"
             ? saveIcon
             : addIcon}
-
         <span className="text-white text-xl font-bold">{text}</span>
       </button>
     </a>

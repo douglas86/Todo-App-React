@@ -30,6 +30,10 @@ const Form = () => {
     sessionStorage.setItem("session", JSON.stringify(storingTask));
   };
 
+  const handleClick = () => {
+    console.log("clicked");
+  };
+
   return (
     <form>
       {inputWithLabel("Task Name", taskName)}
@@ -45,7 +49,7 @@ const Form = () => {
       <CheckboxList />
 
       {inputWithLabel("Add Tags", tags)}
-      {taskButton("Save Task", "save")}
+      {taskButton("Save Task", "save", handleClick)}
     </form>
   );
 };

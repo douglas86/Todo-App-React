@@ -13,18 +13,23 @@ const CheckboxList = () => {
 
   // remove checkbox by ID
   const removeCheckbox = (id: number) => {
-    setCheckboxes(checkboxes.filter((checkbox) => checkbox.id !== id));
+    const filtering = checkboxes.filter((checkbox) => checkbox.id !== id);
+
+    setCheckboxes(filtering); // update checkbox state with deleted items
+    handleSessionStorage(filtering); // update checkbox in session storage with deleted items
   };
 
   // toggle checkbox checked state
   const toggleCheckbox = (id: number) => {
-    setCheckboxes((prev) =>
-      prev.map((checkbox) =>
-        checkbox.id === id
-          ? { ...checkbox, checked: !checkbox.checked }
-          : checkbox,
-      ),
+    // find id and update to true or false depending on toggle
+    const updated = checkboxes.map((checkbox: Checkbox) =>
+      checkbox.id === id
+        ? { ...checkbox, checked: !checkbox.checked }
+        : checkbox,
     );
+
+    setCheckboxes(updated); // update checkbox array state
+    handleSessionStorage(updated); // update checkbox in session storage
   };
 
   const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,7 +56,7 @@ const CheckboxList = () => {
     }
   };
 
-  const handleSessionStorage = (arr: Array<object>) => {
+  const handleSessionStorage = (arr: Array<object> | object) => {
     const checked = { checked: arr };
     const existing = sessionStorage.getItem("session");
     const sessionTask = existing ? JSON.parse(existing) : {};

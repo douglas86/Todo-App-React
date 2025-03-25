@@ -1,13 +1,13 @@
 import React, { useState } from "react";
+
 import CheckboxItem from "../molecule/CheckboxItem.tsx";
 
-interface Checkbox {
-  id: number;
-  label: string;
-  checked: boolean;
-}
+import { useSession } from "../../hooks/useSession.tsx";
+import { Checkbox } from "../../utils/interfaces.tsx";
 
 const CheckboxList = () => {
+  const { post } = useSession();
+
   const [input, setInput] = useState<string>("");
   const [checkboxes, setCheckboxes] = useState<Checkbox[]>([]);
 
@@ -57,13 +57,7 @@ const CheckboxList = () => {
   };
 
   const handleSessionStorage = (arr: Array<object> | object) => {
-    const checked = { checked: arr };
-    const existing = sessionStorage.getItem("session");
-    const sessionTask = existing ? JSON.parse(existing) : {};
-
-    const storingLevel = { ...sessionTask, ...checked };
-
-    sessionStorage.setItem("session", JSON.stringify(storingLevel));
+    post({ checked: arr });
   };
 
   return (

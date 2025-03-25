@@ -1,4 +1,5 @@
 import { ChangeEvent } from "react";
+import { useSession } from "../../hooks/useSession.tsx";
 
 import LevelSelection from "./LevelSelection.tsx";
 import CheckboxList from "./CheckboxList.tsx";
@@ -6,28 +7,18 @@ import { dateTime, inputWithLabel } from "../atoms/elements.tsx";
 import { taskButton } from "../atoms/buttons.tsx";
 
 const Form = () => {
+  const { post } = useSession();
+
   // save task name to session storage
   const taskName = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
-    const newTask = { newTask: event.target.value };
-    const existing = sessionStorage.getItem("session");
-    const sessionTask = existing ? JSON.parse(existing) : {};
-
-    const storingTask = { ...sessionTask, ...newTask };
-
-    sessionStorage.setItem("session", JSON.stringify(storingTask));
+    post({ newTask: event.target.value });
   };
 
   // save tags to session storage
   const tags = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
-    const newTags = { newTags: event.target.value };
-    const existing = sessionStorage.getItem("session");
-    const sessionTask = existing ? JSON.parse(existing) : {};
-
-    const storingTask = { ...sessionTask, ...newTags };
-
-    sessionStorage.setItem("session", JSON.stringify(storingTask));
+    post({ newTags: event.target.value });
   };
 
   // save session storage to local storage

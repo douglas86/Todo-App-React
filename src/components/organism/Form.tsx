@@ -21,6 +21,18 @@ const Form = () => {
     post({ newTags: event.target.value });
   };
 
+  // save date to session storage
+  const handleDate = (event: ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    post({ date: event.target.value });
+  };
+
+  // save time to session storage
+  const handleTime = (event: ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    post({ time: event.target.value });
+  };
+
   // save session storage to local storage
   // save data when form save button clicked
   const handleClick = () => {
@@ -57,8 +69,8 @@ const Form = () => {
       <LevelSelection description={"Complexity"} />
 
       <div className={"flex justify-evenly mb-4"}>
-        {dateTime("date")}
-        {dateTime("time")}
+        {dateTime("date", handleDate)}
+        {dateTime("time", handleTime)}
       </div>
 
       <CheckboxList />

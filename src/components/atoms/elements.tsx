@@ -1,16 +1,9 @@
-import { ChangeEvent, ChangeEventHandler } from "react";
+import { ChangeEventHandler } from "react";
 
-export const dateTime = (type: "date" | "time") => {
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const newValue = { [type]: event.target.value };
-    const existing = sessionStorage.getItem("session");
-    const dateTimeSession = existing ? JSON.parse(existing) : {};
-
-    const storing = { ...dateTimeSession, ...newValue };
-
-    sessionStorage.setItem("session", JSON.stringify(storing));
-  };
-
+export const dateTime = (
+  type: "date" | "time",
+  handleChange: ChangeEventHandler,
+) => {
   return (
     <div>
       <label className="text-sm font-medium text-gray-700">

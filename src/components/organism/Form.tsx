@@ -30,8 +30,32 @@ const Form = () => {
     sessionStorage.setItem("session", JSON.stringify(storingTask));
   };
 
+  // save session storage to local storage
+  // save data when form save button clicked
   const handleClick = () => {
-    console.log("clicked");
+    const session = sessionStorage.getItem("session");
+
+    if (session !== null) {
+      try {
+        const parsed = JSON.parse(session);
+
+        if (parsed.newTask) {
+          localStorage.setItem(
+            JSON.stringify(parsed.newTask),
+            JSON.stringify({
+              priority: parsed.Priority,
+              complexity: parsed.Complexity,
+              date: parsed.date,
+              time: parsed.time,
+              checked: parsed.checked,
+              tags: parsed.newTags,
+            }),
+          );
+        }
+      } catch (e) {
+        console.error("Failed to parse sessionStorage JSON: ", e);
+      }
+    }
   };
 
   return (

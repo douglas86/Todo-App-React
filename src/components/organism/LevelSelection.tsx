@@ -1,18 +1,14 @@
 import { useState } from "react";
 import { roundButton } from "../atoms/buttons.tsx";
+import { useSession } from "../../hooks/useSession.tsx";
 
 const LevelSelection = ({ description }: { description: string }) => {
+  const { post } = useSession();
   const [number, setNumber] = useState(1);
 
   const handleClick = (num: number) => {
     setNumber(num);
-    const level = { [description]: num };
-    const existing = sessionStorage.getItem("session");
-    const sessionTask = existing ? JSON.parse(existing) : {};
-
-    const storingLevel = { ...sessionTask, ...level };
-
-    sessionStorage.setItem("session", JSON.stringify(storingLevel));
+    post({ [description]: num });
   };
 
   return (

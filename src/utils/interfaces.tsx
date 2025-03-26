@@ -1,3 +1,4 @@
+// checkbox interface
 export interface Checkbox {
   id: number;
   label: string;

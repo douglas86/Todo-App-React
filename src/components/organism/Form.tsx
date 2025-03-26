@@ -1,13 +1,16 @@
 import { ChangeEvent } from "react";
-import { useSession } from "../../hooks/useSession.tsx";
 
 import LevelSelection from "./LevelSelection.tsx";
 import CheckboxList from "./CheckboxList.tsx";
 import { dateTime, inputWithLabel } from "../atoms/elements.tsx";
 import { taskButton } from "../atoms/buttons.tsx";
 
+import { useSession } from "../../hooks/useSession.tsx";
+import { useLocal } from "../../hooks/useLocal.tsx";
+
 const Form = () => {
-  const { post } = useSession();
+  const { post, get } = useSession();
+  const { postLocal } = useLocal();
 
   // save task name to session storage
   const taskName = (event: ChangeEvent<HTMLInputElement>) => {
@@ -36,25 +39,23 @@ const Form = () => {
   // save session storage to local storage
   // save data when form save button clicked
   const handleClick = () => {
-    const session = sessionStorage.getItem("session");
+    const session = get();
 
     if (session !== null) {
       try {
         const parsed = JSON.parse(session);
 
-        if (parsed.newTask) {
-          localStorage.setItem(
-            JSON.stringify(parsed.newTask),
-            JSON.stringify({
-              priority: parsed.Priority,
-              complexity: parsed.Complexity,
-              date: parsed.date,
-              time: parsed.time,
-              checked: parsed.checked,
-              tags: parsed.newTags,
-            }),
+        const data = (Object.entries(parsed) as [string, string | object[]][])
+          .filter(([key]) => key !== "newTask")
+          .reduce(
+            (obj, [key, value]) => {
+              obj[key] = value;
+              return obj;
+            },
+            {} as Record<string, string | Array<object>>,
           );
-        }
+
+        postLocal(parsed.newTask, data);
       } catch (e) {
         console.error("Failed to parse sessionStorage JSON: ", e);
       }

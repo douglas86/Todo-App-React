@@ -13,11 +13,7 @@ export const useSession = () => {
   };
 
   const get = () => {
-    return (
-      <div>
-        <h1>Fetching</h1>
-      </div>
-    );
+    return sessionStorage.getItem("session");
   };
 
   return { post, get };

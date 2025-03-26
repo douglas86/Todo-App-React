@@ -1,4 +1,5 @@
 import { ChangeEvent } from "react";
+import { useRedirect } from "react-admin";
 
 import LevelSelection from "./LevelSelection.tsx";
 import CheckboxList from "./CheckboxList.tsx";
@@ -9,19 +10,20 @@ import { useSession } from "../../hooks/useSession.tsx";
 import { useLocal } from "../../hooks/useLocal.tsx";
 
 const Form = () => {
+  const redirect = useRedirect();
   const { post, get } = useSession();
   const { postLocal } = useLocal();
 
   // save task name to session storage
   const taskName = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
-    post({ newTask: event.target.value });
+    post({ task: event.target.value });
   };
 
   // save tags to session storage
   const tags = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
-    post({ newTags: event.target.value });
+    post({ tags: event.target.value });
   };
 
   // save date to session storage
@@ -38,7 +40,7 @@ const Form = () => {
 
   // save session storage to local storage
   // save data when form save button clicked
-  const handleClick = () => {
+  const handleSubmit = () => {
     const session = get();
 
     if (session !== null) {
@@ -46,7 +48,7 @@ const Form = () => {
         const parsed = JSON.parse(session);
 
         const data = (Object.entries(parsed) as [string, string | object[]][])
-          .filter(([key]) => key !== "newTask")
+          .filter(([key]) => key !== "task")
           .reduce(
             (obj, [key, value]) => {
               obj[key] = value;
@@ -55,7 +57,8 @@ const Form = () => {
             {} as Record<string, string | Array<object>>,
           );
 
-        postLocal(parsed.newTask, data);
+        postLocal(parsed.task, data);
+        redirect("/");
       } catch (e) {
         console.error("Failed to parse sessionStorage JSON: ", e);
       }
@@ -63,7 +66,7 @@ const Form = () => {
   };
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       {inputWithLabel("Task Name", taskName)}
 
       <LevelSelection description={"Priority"} />
@@ -77,7 +80,7 @@ const Form = () => {
       <CheckboxList />
 
       {inputWithLabel("Add Tags", tags)}
-      {taskButton("Save Task", "save", handleClick)}
+      {taskButton("Save Task", "save")}
     </form>
   );
 };

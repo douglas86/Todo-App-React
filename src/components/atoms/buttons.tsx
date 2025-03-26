@@ -42,12 +42,12 @@ export const submitButton = (text: ReactNode | string) => (
 export const taskButton = (
   text: string,
   symbol: "new" | "repeat" | "save",
-  handleClick: MouseEventHandler<HTMLButtonElement>,
+  handleClick?: MouseEventHandler<HTMLButtonElement>,
 ) => {
   return (
     <a href={symbol !== "new" ? "/" : "/new-task"}>
       <button
-        type="button"
+        type={symbol === "save" ? "submit" : "button"}
         className="flex space-x-3 w-75 m-auto justify-center items-center px-5 py-3 bg-indigo-500 hover:bg-indigo-800 rounded-full drop-shadow-md cursor-pointer duration-300"
         onClick={handleClick}
       >

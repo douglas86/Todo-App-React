@@ -14,9 +14,32 @@ const Form = () => {
   const { post, get } = useSession();
   const { postLocal } = useLocal();
 
+  // TODO: form validation for task name
+  // TODO: this validation needs to make sure that the form name is unique
+
   // save task name to session storage
   const taskName = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
+    const value = event.target.value.toLowerCase();
+    const keys: Array<string> = [];
+    // fhfgh
+    for (let i = 0; i < localStorage.length; i++) {
+      // transform data to combar to event value
+      const key = (localStorage.key(i) || "")
+        .split("")
+        .slice(1, -1)
+        .join("")
+        .toLowerCase();
+      // once value is transformed push value to a key array
+      keys.push(key);
+    }
+    console.log("keys", keys);
+    if (keys.includes(value)) {
+      console.log("value is included");
+    } else {
+      console.log("value is not included");
+    }
+
     post({ task: event.target.value });
   };
 

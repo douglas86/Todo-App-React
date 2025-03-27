@@ -11,15 +11,18 @@ import { useLocal } from "../../hooks/useLocal.tsx";
 
 const Form = () => {
   const redirect = useRedirect();
-  const { post, get } = useSession();
+  const { post, get, error } = useSession();
   const { postLocal, getLocal } = useLocal();
 
   // save task name to session storage
   const taskName = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
+    const key = "TaskError";
+
+    error(key, "");
 
     return getLocal(event.target.value.toLowerCase())
-      ? post({ t: "value" })
+      ? error(key, "This name has already been taken")
       : post({ task: event.target.value });
   };
 

@@ -3,18 +3,15 @@ import { useRedirect } from "react-admin";
 
 import LevelSelection from "./LevelSelection.tsx";
 import CheckboxList from "./CheckboxList.tsx";
-import { dateTime, inputWithLabel } from "../atoms/elements.tsx";
+import { dateTime, errorMessage, inputWithLabel } from "../atoms/elements.tsx";
 import { taskButton } from "../atoms/buttons.tsx";
 
 import { useSession } from "../../hooks/useSession.tsx";
 import { useLocal } from "../../hooks/useLocal.tsx";
-
-type ArrayType = {
-  TaskError: string;
-};
+import { NewTaskError } from "../../utils/types.tsx";
 
 const Form = () => {
-  const [error, setError] = useState<ArrayType>({ TaskError: "" });
+  const [error, setError] = useState<NewTaskError>({ TaskError: "" });
   const redirect = useRedirect();
   const { post, get } = useSession();
   const { postLocal, getLocal } = useLocal();
@@ -24,17 +21,16 @@ const Form = () => {
     event.preventDefault();
     const key = "TaskError";
 
-    // setError((prev) => [...prev, { [key]: "" }]);
-
+    // check if the name has already been used
     if (getLocal(event.target.value.toLowerCase())) {
+      // when name is already taken
       setError({ [key]: "This value already exists!" });
     } else {
+      // when name is not taken
       setError({ [key]: " " });
       post({ task: event.target.value });
     }
   };
-
-  console.log("error", error);
 
   // save tags to session storage
   const tags = (event: ChangeEvent<HTMLInputElement>) => {
@@ -84,6 +80,8 @@ const Form = () => {
   return (
     <form onSubmit={handleSubmit}>
       {inputWithLabel("Task Name", taskName)}
+
+      {errorMessage(error.TaskError)}
 
       <LevelSelection description={"Priority"} />
       <LevelSelection description={"Complexity"} />

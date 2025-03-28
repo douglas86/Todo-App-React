@@ -19,6 +19,12 @@ export const dateTime = (
   );
 };
 
+export const errorMessage = (message: string) => {
+  return message !== "" ? (
+    <p className={`font-bold text-center text-red-400`}>{message}</p>
+  ) : null;
+};
+
 export const inputWithLabel = (
   text: string,
   handleClick: ChangeEventHandler<HTMLInputElement>,

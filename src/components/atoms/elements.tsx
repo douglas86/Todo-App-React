@@ -14,6 +14,7 @@ export const dateTime = (
         className="border rounded-lg w-50 h-10 m-4 p-4"
         aria-label="Date and time"
         onChange={handleChange}
+        required
       />
     </div>
   );

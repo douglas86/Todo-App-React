@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, useState } from "react";
 import { useRedirect } from "react-admin";
 
 import LevelSelection from "./LevelSelection.tsx";
@@ -9,9 +9,14 @@ import { taskButton } from "../atoms/buttons.tsx";
 import { useSession } from "../../hooks/useSession.tsx";
 import { useLocal } from "../../hooks/useLocal.tsx";
 
+type ArrayType = {
+  TaskError: string;
+};
+
 const Form = () => {
+  const [error, setError] = useState<ArrayType>({ TaskError: "" });
   const redirect = useRedirect();
-  const { post, get, error } = useSession();
+  const { post, get } = useSession();
   const { postLocal, getLocal } = useLocal();
 
   // save task name to session storage
@@ -19,12 +24,17 @@ const Form = () => {
     event.preventDefault();
     const key = "TaskError";
 
-    error(key, "");
+    // setError((prev) => [...prev, { [key]: "" }]);
 
-    return getLocal(event.target.value.toLowerCase())
-      ? error(key, "This name has already been taken")
-      : post({ task: event.target.value });
+    if (getLocal(event.target.value.toLowerCase())) {
+      setError({ [key]: "This value already exists!" });
+    } else {
+      setError({ [key]: " " });
+      post({ task: event.target.value });
+    }
   };
+
+  console.log("error", error);
 
   // save tags to session storage
   const tags = (event: ChangeEvent<HTMLInputElement>) => {

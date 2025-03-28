@@ -16,9 +16,5 @@ export const useSession = () => {
     return sessionStorage.getItem("session");
   };
 
-  const error = (key: string, err: string) => {
-    return sessionStorage.setItem(key, err);
-  };
-
-  return { post, get, error };
+  return { post, get };
 };

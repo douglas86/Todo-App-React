@@ -43,7 +43,7 @@ export const submitButton = (text: ReactNode | string) => (
 export const taskButton = (
   text: string,
   symbol: "new" | "repeat" | "save",
-  disabled: boolean,
+  disabled?: boolean,
   handleClick?: MouseEventHandler<HTMLButtonElement>,
 ) => {
   return (

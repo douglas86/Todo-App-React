@@ -4,7 +4,7 @@ export const useLocal = () => {
   };
 
   // fetches value from local storage based on key value
-  const getLocal = (key: string) => {
+  const getLocal = (key?: string) => {
     const keys: Array<string> = [];
 
     // function to find value and transform data to array

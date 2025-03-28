@@ -77,6 +77,9 @@ const Form = () => {
     }
   };
 
+  // set default values only when task name has been entered
+  post({ Priority: 1, Complexity: 1 });
+
   return (
     <form onSubmit={handleSubmit}>
       {inputWithLabel("Task Name", taskName)}

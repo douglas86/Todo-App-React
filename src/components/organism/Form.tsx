@@ -97,7 +97,7 @@ const Form = () => {
       <CheckboxList />
 
       {inputWithLabel("Add Tags", tags)}
-      {taskButton("Save Task", "save")}
+      {taskButton("Save Task", "save", error.TaskError !== "")}
     </form>
   );
 };

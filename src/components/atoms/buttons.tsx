@@ -37,11 +37,13 @@ export const submitButton = (text: ReactNode | string) => (
  * This button is used for adding or repeating tasks
  * @param text - what wording you want on the button
  * @param symbol - there is one of three symbols to be showen on the button new, repeat or save
+ * @param disabled
  * @param handleClick
  */
 export const taskButton = (
   text: string,
   symbol: "new" | "repeat" | "save",
+  disabled: boolean,
   handleClick?: MouseEventHandler<HTMLButtonElement>,
 ) => {
   return (
@@ -49,6 +51,7 @@ export const taskButton = (
       <button
         type={symbol === "save" ? "submit" : "button"}
         className="flex space-x-3 w-75 m-auto justify-center items-center px-5 py-3 bg-indigo-500 hover:bg-indigo-800 rounded-full drop-shadow-md cursor-pointer duration-300"
+        disabled={disabled}
         onClick={handleClick}
       >
         {symbol === "repeat"

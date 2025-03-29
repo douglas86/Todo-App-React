@@ -4,12 +4,15 @@ import { FaArrowRight, FaArrowLeft, FaRegSave } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import { TiTick } from "react-icons/ti";
 import { GiSkullCrossedBones } from "react-icons/gi";
+import { CiEdit } from "react-icons/ci";
 
 export const addIcon = <IoAddCircleOutline className="scale-120 w-6 h-6" />;
 
 export const crossIcon = <GiSkullCrossedBones className="scale-120 w-6 h-6" />;
 
 export const deleteIcon = <MdDeleteForever className="scale-120 w-6 h-6" />;
+
+export const editIcon = <CiEdit className="scale-120 w-6 h-6" />;
 
 export const leftArrowIcon = () => (
   <FaArrowLeft className="scale-100 w-6 h-6" />

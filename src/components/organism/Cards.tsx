@@ -2,6 +2,9 @@ import { convertKeyToUsableData } from "../../utils/helpers.tsx";
 import { editIcon, tickIcon } from "../atoms/icons.tsx";
 
 const Cards = ({ mapToObject }: { mapToObject: Storage | object }) => {
+  // TODO: populate a state for keeping track of changes on the card
+  // TODO: these changes will be the toggling of checked or unchecked state
+
   return (
     <>
       {Object.entries(mapToObject).map(([key, value]) => (

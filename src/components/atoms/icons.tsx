@@ -6,25 +6,23 @@ import { TiTick } from "react-icons/ti";
 import { GiSkullCrossedBones } from "react-icons/gi";
 import { CiEdit } from "react-icons/ci";
 
-export const addIcon = <IoAddCircleOutline className="scale-120 w-6 h-6" />;
+import { iconsStyles } from "../../style/atomStyling.tsx";
 
-export const crossIcon = <GiSkullCrossedBones className="scale-120 w-6 h-6" />;
+export const addIcon = <IoAddCircleOutline className={iconsStyles} />;
 
-export const deleteIcon = <MdDeleteForever className="scale-120 w-6 h-6" />;
+export const crossIcon = <GiSkullCrossedBones className={iconsStyles} />;
 
-export const editIcon = <CiEdit className="scale-120 w-6 h-6" />;
+export const deleteIcon = <MdDeleteForever className={iconsStyles} />;
 
-export const leftArrowIcon = () => (
-  <FaArrowLeft className="scale-100 w-6 h-6" />
-);
+export const editIcon = <CiEdit className={iconsStyles} />;
 
-export const repeatIcon = <BsArrowRepeat className="scale-120 w-6 h-6" />;
+export const leftArrowIcon = () => <FaArrowLeft className={iconsStyles} />;
 
-export const rightArrowIcon = () => (
-  <FaArrowRight className="scale-100 w-6 h-6" />
-);
+export const repeatIcon = <BsArrowRepeat className={iconsStyles} />;
 
-export const saveIcon = <FaRegSave className="scale-120 w-6 h-6" />;
+export const rightArrowIcon = () => <FaArrowRight className={iconsStyles} />;
+
+export const saveIcon = <FaRegSave className={iconsStyles} />;
 
 export const searchIcon = () => {
   return (
@@ -45,4 +43,4 @@ export const searchIcon = () => {
   );
 };
 
-export const tickIcon = <TiTick className="scale-120 w-6 h-6" />;
+export const tickIcon = <TiTick className={iconsStyles} />;

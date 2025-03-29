@@ -28,7 +28,7 @@ const Form = () => {
     } else {
       // when name is not taken
       setError({ [key]: " " });
-      post({ task: event.target.value });
+      post({ task: event.target.value, checkedCard: false });
     }
   };
 

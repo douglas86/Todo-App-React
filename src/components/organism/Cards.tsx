@@ -1,9 +1,30 @@
 import { convertKeyToUsableData } from "../../utils/helpers.tsx";
-import { editIcon, tickIcon } from "../atoms/icons.tsx";
+import { crossIcon, editIcon, tickIcon } from "../atoms/icons.tsx";
+import { roundButton } from "../atoms/buttons.tsx";
+import { useLocal } from "../../hooks/useLocal.tsx";
 
 const Cards = ({ mapToObject }: { mapToObject: Storage | object }) => {
-  // TODO: populate a state for keeping track of changes on the card
-  // TODO: these changes will be the toggling of checked or unchecked state
+  const { getLocal } = useLocal();
+
+  const handleToggle = () => {};
+
+  const handleClick = (key: string) => {
+    const item = localStorage.getItem(key);
+
+    try {
+      return item
+        ? localStorage.setItem(
+            key,
+            JSON.stringify({
+              ...JSON.parse(item),
+              checkedCard: !JSON.parse(item).checkedCard,
+            }),
+          )
+        : null;
+    } catch {
+      return null;
+    }
+  };
 
   return (
     <>
@@ -22,7 +43,9 @@ const Cards = ({ mapToObject }: { mapToObject: Storage | object }) => {
             </div>
             <div className={`flex w-[30%] justify-evenly`}>
               {editIcon}
-              {tickIcon}
+              {value.checkedCard
+                ? roundButton(8, tickIcon, () => handleClick(key), "green-400")
+                : roundButton(8, crossIcon, () => handleClick(key), "sky-400")}
             </div>
           </div>
 

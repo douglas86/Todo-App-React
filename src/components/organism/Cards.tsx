@@ -1,7 +1,7 @@
 import { convertKeyToUsableData } from "../../utils/helpers.tsx";
 import { crossIcon, editIcon, tickIcon } from "../atoms/icons.tsx";
 import { roundButton } from "../atoms/buttons.tsx";
-import { useLocal } from "../../hooks/useLocal.tsx";
+import useLocal from "../../hooks/useLocal.tsx";
 
 const Cards = ({ mapToObject }: { mapToObject: Storage | object }) => {
   const { postLocal, getLocal } = useLocal();

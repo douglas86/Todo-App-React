@@ -1,10 +1,12 @@
 import { convertKeyToUsableData } from "../utils/helpers.tsx";
 
-export const useLocal = () => {
+const useLocal = () => {
+  // sets or updates the key in local storage
   const postLocal = (key: string, body: object) => {
     return localStorage.setItem(key, JSON.stringify(body));
   };
 
+  // get a specific object from local storage based on key
   const getLocal = (key: string) => {
     return localStorage.getItem(key);
   };
@@ -30,3 +32,5 @@ export const useLocal = () => {
 
   return { postLocal, getLocal, keyExists };
 };
+
+export default useLocal;

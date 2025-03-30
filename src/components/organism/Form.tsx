@@ -7,7 +7,7 @@ import { dateTime, errorMessage, inputWithLabel } from "../atoms/elements.tsx";
 import { taskButton } from "../atoms/buttons.tsx";
 
 import { useSession } from "../../hooks/useSession.tsx";
-import { useLocal } from "../../hooks/useLocal.tsx";
+import useLocal from "../../hooks/useLocal.tsx";
 import { NewTaskError } from "../../utils/types.tsx";
 
 const Form = () => {

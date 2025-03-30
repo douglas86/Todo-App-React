@@ -30,13 +30,6 @@ const HomePage = () => {
         <DropdownList title="Category" itemsList={cetgoryList} />
       </div>
 
-      {/*{Object.entries(localStorage).map(([key, value]) => (*/}
-      {/*  <div key={key}>*/}
-      {/*    <p>key: {key}</p>*/}
-      {/*    <p>value: {value}</p>*/}
-      {/*  </div>*/}
-      {/*))}*/}
-
       <Cards mapToObject={localStorage} />
 
       {taskButton("Add New Task", "new")}

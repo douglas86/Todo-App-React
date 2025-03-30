@@ -5,8 +5,12 @@ export const useLocal = () => {
     return localStorage.setItem(JSON.stringify(key), JSON.stringify(body));
   };
 
+  // const getLocal = (key: string) => {
+  //   return localStorage.getItem(key);
+  // };
+
   // fetches value from local storage based on key value
-  const getLocal = (key: string) => {
+  const keyExists = (key: string) => {
     const keys: Array<string> = [];
 
     // function to find value and transform data to array
@@ -24,5 +28,5 @@ export const useLocal = () => {
     return findKey();
   };
 
-  return { postLocal, getLocal };
+  return { postLocal, keyExists };
 };

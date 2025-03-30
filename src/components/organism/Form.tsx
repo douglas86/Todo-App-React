@@ -14,7 +14,7 @@ const Form = () => {
   const [error, setError] = useState<NewTaskError>({ TaskError: "" });
   const redirect = useRedirect();
   const { post, get } = useSession();
-  const { postLocal, getLocal } = useLocal();
+  const { postLocal, keyExists } = useLocal();
 
   // save task name to session storage
   const taskName = (event: ChangeEvent<HTMLInputElement>) => {
@@ -22,7 +22,7 @@ const Form = () => {
     const key = "TaskError";
 
     // check if the name has already been used
-    if (getLocal(event.target.value.toLowerCase())) {
+    if (keyExists(event.target.value.toLowerCase())) {
       // when name is already taken
       setError({ [key]: "This value already exists!" });
     } else {

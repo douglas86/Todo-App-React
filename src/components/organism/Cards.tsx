@@ -9,7 +9,8 @@ const Cards = ({ mapToObject }: { mapToObject: Storage | object }) => {
   const handleToggle = () => {};
 
   const handleClick = (key: string) => {
-    const item = localStorage.getItem(key);
+    // const item = localStorage.getItem(key);
+    const item = getLocal(key);
 
     try {
       return item

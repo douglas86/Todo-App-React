@@ -4,24 +4,20 @@ import { roundButton } from "../atoms/buttons.tsx";
 import { useLocal } from "../../hooks/useLocal.tsx";
 
 const Cards = ({ mapToObject }: { mapToObject: Storage | object }) => {
-  const { getLocal } = useLocal();
-
-  const handleToggle = () => {};
+  const { postLocal, getLocal } = useLocal();
 
   const handleClick = (key: string) => {
     // const item = localStorage.getItem(key);
     const item = getLocal(key);
+    const value = item
+      ? {
+          ...JSON.parse(item),
+          checkedCard: !JSON.parse(item).checkedCard,
+        }
+      : null;
 
     try {
-      return item
-        ? localStorage.setItem(
-            key,
-            JSON.stringify({
-              ...JSON.parse(item),
-              checkedCard: !JSON.parse(item).checkedCard,
-            }),
-          )
-        : null;
+      return item ? postLocal(key, value) : null;
     } catch {
       return null;
     }

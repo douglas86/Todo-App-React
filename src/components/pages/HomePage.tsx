@@ -51,7 +51,7 @@ const HomePage = () => {
       window.removeEventListener("storage", handleStorageChange);
       window.removeEventListener("local-storage-updated", handleStorageChange);
     };
-  }, []);
+  }, [storageData]);
 
   return (
     <div className="w-full min-w-[200px]">

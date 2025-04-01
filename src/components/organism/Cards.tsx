@@ -16,7 +16,10 @@ const Cards = ({ mapToObject }: { mapToObject: Storage | object }) => {
       : null;
 
     try {
-      return item ? postLocal(key, value) : null;
+      if (item) {
+        postLocal(key, value);
+        window.dispatchEvent(new Event("local-storage-updated"));
+      }
     } catch {
       return null;
     }

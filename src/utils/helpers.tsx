@@ -1,8 +1,21 @@
 import { format, isToday, isTomorrow, parseISO } from "date-fns";
 
+export const checkPriorityLevel = (num: number) => {
+  return num < 5 ? "Low" : num < 8 ? "Medium" : "High";
+};
+
+/**
+ * convert the key from storage to a workable string value
+ * @param str
+ */
 export const convertKeyToUsableData = (str: string) =>
   str.split("").slice(1, -1).join("").toLowerCase();
 
+/**
+ * check to see if the date is tomorrow, today
+ * if any other date returns the normal date
+ * @param isoDate
+ */
 export const formatFriendlyDate = (isoDate: string) => {
   const date = parseISO(isoDate);
 

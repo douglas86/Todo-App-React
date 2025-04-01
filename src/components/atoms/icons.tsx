@@ -1,7 +1,7 @@
 import { IoAddCircleOutline } from "react-icons/io5";
 import { BsArrowRepeat } from "react-icons/bs";
 import { FaArrowRight, FaArrowLeft, FaRegSave } from "react-icons/fa";
-import { FaRegCalendarAlt } from "react-icons/fa";
+import { FaRegCalendarAlt, FaArrowUp } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import { TiTick } from "react-icons/ti";
 import { GiSkullCrossedBones } from "react-icons/gi";
@@ -47,3 +47,5 @@ export const searchIcon = () => {
 };
 
 export const tickIcon = <TiTick className={iconsStyles} />;
+
+export const upArrowIcon = <FaArrowUp className={iconsStyles} />;

@@ -1,9 +1,10 @@
 import {
+  checkPriorityLevel,
   convertKeyToUsableData,
   formatFriendlyDate,
 } from "../../utils/helpers.tsx";
 import { calendarIcon, crossIcon, editIcon } from "../atoms/icons.tsx";
-import { tickIcon } from "../atoms/icons.tsx";
+import { tickIcon, upArrowIcon } from "../atoms/icons.tsx";
 import { roundButton } from "../atoms/buttons.tsx";
 import useLocal from "../../hooks/useLocal.tsx";
 
@@ -59,12 +60,19 @@ const Cards = ({ mapToObject }: { mapToObject: Storage | object }) => {
                 : roundButton(8, crossIcon, () => handleClick(key), "sky-400")}
             </div>
           </div>
-          <div className={"flex"}>
+          <div className={"flex m-3"}>
             <div className={"mr-2"}>{calendarIcon}</div>
             <h3
               className={`text-lg ${formatFriendlyDate(value.date).forgroundTextColor}`}
             >
               Due Date: {formatFriendlyDate(value.date).text}
+            </h3>
+          </div>
+          <div className={`flex m-3`}>
+            <div className={`mr-2`}>{upArrowIcon}</div>
+            <h3 className={`text-lg text-gray-400`}>
+              Priority: {checkPriorityLevel(value.Priority)} ({value.Priority}
+              /10)
             </h3>
           </div>
         </div>

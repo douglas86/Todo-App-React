@@ -4,7 +4,7 @@ import {
   formatFriendlyDate,
 } from "../../utils/helpers.tsx";
 import { calendarIcon, crossIcon, editIcon } from "../atoms/icons.tsx";
-import { tickIcon, upArrowIcon } from "../atoms/icons.tsx";
+import { tickIcon, upArrowIcon, complexIcon } from "../atoms/icons.tsx";
 import { roundButton } from "../atoms/buttons.tsx";
 import useLocal from "../../hooks/useLocal.tsx";
 
@@ -72,6 +72,14 @@ const Cards = ({ mapToObject }: { mapToObject: Storage | object }) => {
             <div className={`mr-2`}>{upArrowIcon}</div>
             <h3 className={`text-lg text-gray-400`}>
               Priority: {checkPriorityLevel(value.Priority)} ({value.Priority}
+              /10)
+            </h3>
+          </div>
+          <div className={`flex m-3`}>
+            <div className={`mr-2`}>{complexIcon}</div>
+            <h3 className={`text-lg text-gray-400`}>
+              Complexity: {checkPriorityLevel(value.Complexity)} (
+              {value.Complexity}
               /10)
             </h3>
           </div>

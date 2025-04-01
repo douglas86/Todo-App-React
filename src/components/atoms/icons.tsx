@@ -6,12 +6,15 @@ import { MdDeleteForever } from "react-icons/md";
 import { TiTick } from "react-icons/ti";
 import { GiSkullCrossedBones } from "react-icons/gi";
 import { CiEdit } from "react-icons/ci";
+import { TbTopologyComplex } from "react-icons/tb";
 
 import { iconsStyles } from "../../style/atomStyling.tsx";
 
 export const addIcon = <IoAddCircleOutline className={iconsStyles} />;
 
 export const calendarIcon = <FaRegCalendarAlt className={iconsStyles} />;
+
+export const complexIcon = <TbTopologyComplex className={iconsStyles} />;
 
 export const crossIcon = <GiSkullCrossedBones className={iconsStyles} />;
 

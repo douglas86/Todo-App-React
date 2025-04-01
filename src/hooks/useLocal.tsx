@@ -32,7 +32,12 @@ const useLocal = () => {
     return findKey();
   };
 
-  return { postLocal, getLocal, keyExists };
+  // forces useEffect to update when event is triggered
+  const triggerUpdate = () => {
+    return window.dispatchEvent(new Event("local-storage-updated"));
+  };
+
+  return { postLocal, getLocal, keyExists, triggerUpdate };
 };
 
 export default useLocal;

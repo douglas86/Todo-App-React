@@ -4,7 +4,7 @@ import { roundButton } from "../atoms/buttons.tsx";
 import useLocal from "../../hooks/useLocal.tsx";
 
 const Cards = ({ mapToObject }: { mapToObject: Storage | object }) => {
-  const { postLocal, getLocal } = useLocal();
+  const { postLocal, getLocal, triggerUpdate } = useLocal();
 
   const handleClick = (key: string) => {
     const item = getLocal(key);
@@ -18,7 +18,7 @@ const Cards = ({ mapToObject }: { mapToObject: Storage | object }) => {
     try {
       if (item) {
         postLocal(key, value);
-        window.dispatchEvent(new Event("local-storage-updated"));
+        triggerUpdate();
       }
     } catch {
       return null;

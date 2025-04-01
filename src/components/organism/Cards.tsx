@@ -1,10 +1,9 @@
-import { convertKeyToUsableData } from "../../utils/helpers.tsx";
 import {
-  calendarIcon,
-  crossIcon,
-  editIcon,
-  tickIcon,
-} from "../atoms/icons.tsx";
+  convertKeyToUsableData,
+  formatFriendlyDate,
+} from "../../utils/helpers.tsx";
+import { calendarIcon, crossIcon, editIcon } from "../atoms/icons.tsx";
+import { tickIcon } from "../atoms/icons.tsx";
 import { roundButton } from "../atoms/buttons.tsx";
 import useLocal from "../../hooks/useLocal.tsx";
 
@@ -39,7 +38,15 @@ const Cards = ({ mapToObject }: { mapToObject: Storage | object }) => {
         >
           <div className={"flex"}>
             <div className={`flex items-center w-[70%]`}>
-              <a href={"#"}>
+              <a
+                href={"#"}
+                className={
+                  "flex text-sm font-medium text-gray-500 hover:text-gray-900"
+                }
+              >
+                <div
+                  className={`mr-1 w-6 h-6 rounded-full ${formatFriendlyDate(value.date).backgroundTextColor}`}
+                ></div>
                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-black">
                   {convertKeyToUsableData(key)}
                 </h5>
@@ -52,7 +59,14 @@ const Cards = ({ mapToObject }: { mapToObject: Storage | object }) => {
                 : roundButton(8, crossIcon, () => handleClick(key), "sky-400")}
             </div>
           </div>
-          {calendarIcon}
+          <div className={"flex"}>
+            <div className={"mr-2"}>{calendarIcon}</div>
+            <h3
+              className={`text-lg ${formatFriendlyDate(value.date).forgroundTextColor}`}
+            >
+              Due Date: {formatFriendlyDate(value.date).text}
+            </h3>
+          </div>
         </div>
       ))}
     </>

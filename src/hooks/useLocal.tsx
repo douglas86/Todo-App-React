@@ -3,6 +3,7 @@ import { convertKeyToUsableData } from "../utils/helpers.tsx";
 const useLocal = () => {
   // sets or updates the key in local storage
   const postLocal = (key: string, body: object) => {
+    window.dispatchEvent(new Event("local-storage-updated"));
     return localStorage.setItem(key, JSON.stringify(body));
   };
 

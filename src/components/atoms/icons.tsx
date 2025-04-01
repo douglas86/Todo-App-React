@@ -1,6 +1,7 @@
 import { IoAddCircleOutline } from "react-icons/io5";
 import { BsArrowRepeat } from "react-icons/bs";
 import { FaArrowRight, FaArrowLeft, FaRegSave } from "react-icons/fa";
+import { FaRegCalendarAlt } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import { TiTick } from "react-icons/ti";
 import { GiSkullCrossedBones } from "react-icons/gi";
@@ -9,6 +10,8 @@ import { CiEdit } from "react-icons/ci";
 import { iconsStyles } from "../../style/atomStyling.tsx";
 
 export const addIcon = <IoAddCircleOutline className={iconsStyles} />;
+
+export const calendarIcon = <FaRegCalendarAlt className={iconsStyles} />;
 
 export const crossIcon = <GiSkullCrossedBones className={iconsStyles} />;
 

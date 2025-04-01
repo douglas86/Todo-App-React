@@ -23,6 +23,8 @@ const HomePage = () => {
   // circular progress bar
   //   https://codepen.io/juhaelee/pen/GxymWP
 
+  console.log("get", getLocal());
+
   return (
     <div className="w-full min-w-[200px]">
       <div className="py-2">

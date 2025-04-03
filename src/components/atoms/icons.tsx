@@ -1,4 +1,3 @@
-import { BsArrowRepeat } from "react-icons/bs";
 import { FaArrowRight, FaArrowLeft, FaRegSave } from "react-icons/fa";
 import { FaRegCalendarAlt, FaArrowUp } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
@@ -20,8 +19,6 @@ export const deleteIcon = <MdDeleteForever className={iconsStyles} />;
 export const editIcon = <CiEdit className={iconsStyles} />;
 
 export const leftArrowIcon = () => <FaArrowLeft className={iconsStyles} />;
-
-export const repeatIcon = <BsArrowRepeat className={iconsStyles} />;
 
 export const rightArrowIcon = () => <FaArrowRight className={iconsStyles} />;
 

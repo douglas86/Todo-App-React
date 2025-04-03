@@ -4,7 +4,7 @@ import {
   formatFriendlyDate,
 } from "../../utils/helpers.tsx";
 import { editIcon } from "../atoms/iconsCi.tsx";
-import { complexIcon } from "../atoms/icons.tsx";
+import { complexIcon } from "../atoms/iconsTb.tsx";
 import { roundButton } from "../atoms/buttons.tsx";
 import useLocal from "../../hooks/useLocal.tsx";
 import { calendarIcon, upArrowIcon } from "../atoms/iconsFa.tsx";

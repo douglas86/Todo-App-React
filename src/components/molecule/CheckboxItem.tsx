@@ -1,5 +1,5 @@
 import { roundButton } from "../atoms/buttons.tsx";
-import { crossIcon } from "../atoms/icons.tsx";
+import { crossIcon } from "../atoms/iconsGi.tsx";
 import { deleteIcon } from "../atoms/iconsMd.tsx";
 import { tickIcon } from "../atoms/iconsTi.tsx";
 

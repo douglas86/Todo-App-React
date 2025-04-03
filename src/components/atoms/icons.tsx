@@ -1,4 +1,3 @@
-import { IoAddCircleOutline } from "react-icons/io5";
 import { BsArrowRepeat } from "react-icons/bs";
 import { FaArrowRight, FaArrowLeft, FaRegSave } from "react-icons/fa";
 import { FaRegCalendarAlt, FaArrowUp } from "react-icons/fa";
@@ -9,8 +8,6 @@ import { CiEdit } from "react-icons/ci";
 import { TbTopologyComplex } from "react-icons/tb";
 
 import { iconsStyles } from "../../style/atomStyling.tsx";
-
-export const addIcon = <IoAddCircleOutline className={iconsStyles} />;
 
 export const calendarIcon = <FaRegCalendarAlt className={iconsStyles} />;
 

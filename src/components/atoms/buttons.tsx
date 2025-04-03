@@ -1,5 +1,6 @@
 import { ReactNode, MouseEvent, MouseEventHandler } from "react";
-import { addIcon, repeatIcon, saveIcon } from "./icons.tsx";
+import { repeatIcon, saveIcon } from "./icons.tsx";
+import { addIcon } from "./iconsIo5.tsx";
 
 /**
  * This button is completely round passing in the size

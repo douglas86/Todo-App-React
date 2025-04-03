@@ -1,5 +1,3 @@
-import { FaArrowRight, FaArrowLeft, FaRegSave } from "react-icons/fa";
-import { FaRegCalendarAlt, FaArrowUp } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import { TiTick } from "react-icons/ti";
 import { GiSkullCrossedBones } from "react-icons/gi";
@@ -8,8 +6,6 @@ import { TbTopologyComplex } from "react-icons/tb";
 
 import { iconsStyles } from "../../style/atomStyling.tsx";
 
-export const calendarIcon = <FaRegCalendarAlt className={iconsStyles} />;
-
 export const complexIcon = <TbTopologyComplex className={iconsStyles} />;
 
 export const crossIcon = <GiSkullCrossedBones className={iconsStyles} />;
@@ -17,12 +13,6 @@ export const crossIcon = <GiSkullCrossedBones className={iconsStyles} />;
 export const deleteIcon = <MdDeleteForever className={iconsStyles} />;
 
 export const editIcon = <CiEdit className={iconsStyles} />;
-
-export const leftArrowIcon = () => <FaArrowLeft className={iconsStyles} />;
-
-export const rightArrowIcon = () => <FaArrowRight className={iconsStyles} />;
-
-export const saveIcon = <FaRegSave className={iconsStyles} />;
 
 export const searchIcon = () => {
   return (
@@ -44,5 +34,3 @@ export const searchIcon = () => {
 };
 
 export const tickIcon = <TiTick className={iconsStyles} />;
-
-export const upArrowIcon = <FaArrowUp className={iconsStyles} />;

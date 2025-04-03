@@ -1,4 +1,3 @@
-import { MdDeleteForever } from "react-icons/md";
 import { TiTick } from "react-icons/ti";
 import { GiSkullCrossedBones } from "react-icons/gi";
 import { CiEdit } from "react-icons/ci";
@@ -9,8 +8,6 @@ import { iconsStyles } from "../../style/atomStyling.tsx";
 export const complexIcon = <TbTopologyComplex className={iconsStyles} />;
 
 export const crossIcon = <GiSkullCrossedBones className={iconsStyles} />;
-
-export const deleteIcon = <MdDeleteForever className={iconsStyles} />;
 
 export const editIcon = <CiEdit className={iconsStyles} />;
 

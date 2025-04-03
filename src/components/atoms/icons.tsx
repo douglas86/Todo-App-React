@@ -1,4 +1,3 @@
-import { TiTick } from "react-icons/ti";
 import { GiSkullCrossedBones } from "react-icons/gi";
 import { CiEdit } from "react-icons/ci";
 import { TbTopologyComplex } from "react-icons/tb";
@@ -29,5 +28,3 @@ export const searchIcon = () => {
     </div>
   );
 };
-
-export const tickIcon = <TiTick className={iconsStyles} />;

@@ -1,6 +1,7 @@
 import { roundButton } from "../atoms/buttons.tsx";
-import { crossIcon, tickIcon } from "../atoms/icons.tsx";
+import { crossIcon } from "../atoms/icons.tsx";
 import { deleteIcon } from "../atoms/iconsMd.tsx";
+import { tickIcon } from "../atoms/iconsTi.tsx";
 
 interface CheckboxItemProps {
   checkbox: { id: number; label: string; checked: boolean };

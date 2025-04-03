@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { roundButton } from "../atoms/buttons.tsx";
-import { useSession } from "../../hooks/useSession.tsx";
+import useSession from "../../hooks/useSession.tsx";
 
 const LevelSelection = ({ description }: { description: string }) => {
   const { post } = useSession();

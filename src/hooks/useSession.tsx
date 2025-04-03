@@ -1,7 +1,7 @@
 /**
  * custom hook used for fetching and posting data
  */
-export const useSession = () => {
+const useSession = () => {
   const post = (body: object) => {
     const task = body;
     const existing = sessionStorage.getItem("session");
@@ -18,3 +18,5 @@ export const useSession = () => {
 
   return { post, get };
 };
+
+export default useSession;

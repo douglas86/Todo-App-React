@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useRedirect } from "react-admin";
 
 import LevelSelection from "./LevelSelection.tsx";
@@ -6,7 +6,7 @@ import CheckboxList from "./CheckboxList.tsx";
 import { dateTime, errorMessage, inputWithLabel } from "../atoms/elements.tsx";
 import { taskButton } from "../atoms/buttons.tsx";
 
-import { useSession } from "../../hooks/useSession.tsx";
+import useSession from "../../hooks/useSession.tsx";
 import useLocal from "../../hooks/useLocal.tsx";
 import { NewTaskError } from "../../utils/types.tsx";
 
@@ -15,6 +15,8 @@ const Form = () => {
   const redirect = useRedirect();
   const { post, get } = useSession();
   const { postLocal, keyExists } = useLocal();
+
+  const [count, setCount] = useState(0);
 
   // save task name to session storage
   const taskName = (event: ChangeEvent<HTMLInputElement>) => {
@@ -80,6 +82,13 @@ const Form = () => {
   // set default values only when task name has been entered
   post({ Priority: 1, Complexity: 1 });
 
+  useEffect(() => {
+    setCount(Object.keys(get).length);
+    console.log("c", Object.keys(get).length);
+  }, [get]);
+
+  console.log("count", count);
+
   return (
     <form onSubmit={handleSubmit}>
       {inputWithLabel("Task Name", taskName)}
@@ -97,7 +106,11 @@ const Form = () => {
       <CheckboxList />
 
       {inputWithLabel("Add Tags", tags)}
-      {taskButton("Save Task", "save", error.TaskError !== "")}
+      {taskButton(
+        "Save Task",
+        "save",
+        error.TaskError !== "" && Object.keys(error).length === 1,
+      )}
     </form>
   );
 };

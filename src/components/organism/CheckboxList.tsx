@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import CheckboxItem from "../molecule/CheckboxItem.tsx";
 
-import { useSession } from "../../hooks/useSession.tsx";
+import useSession from "../../hooks/useSession.tsx";
 import { Checkbox } from "../../utils/interfaces.tsx";
 
 const CheckboxList = () => {

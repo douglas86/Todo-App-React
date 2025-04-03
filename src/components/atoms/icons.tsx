@@ -1,11 +1,8 @@
-import { CiEdit } from "react-icons/ci";
 import { TbTopologyComplex } from "react-icons/tb";
 
 import { iconsStyles } from "../../style/atomStyling.tsx";
 
 export const complexIcon = <TbTopologyComplex className={iconsStyles} />;
-
-export const editIcon = <CiEdit className={iconsStyles} />;
 
 export const searchIcon = () => {
   return (

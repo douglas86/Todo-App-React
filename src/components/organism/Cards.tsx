@@ -3,13 +3,13 @@ import {
   convertKeyToUsableData,
   formatFriendlyDate,
 } from "../../utils/helpers.tsx";
-import { editIcon } from "../atoms/iconsCi.tsx";
-import { complexIcon } from "../atoms/iconsTb.tsx";
+import { editIcon } from "../atoms/icons/iconsCi.tsx";
+import { complexIcon } from "../atoms/icons/iconsTb.tsx";
 import { roundButton } from "../atoms/buttons.tsx";
 import useLocal from "../../hooks/useLocal.tsx";
-import { calendarIcon, upArrowIcon } from "../atoms/iconsFa.tsx";
-import { tickIcon } from "../atoms/iconsTi.tsx";
-import { crossIcon } from "../atoms/iconsGi.tsx";
+import { calendarIcon, upArrowIcon } from "../atoms/icons/iconsFa.tsx";
+import { tickIcon } from "../atoms/icons/iconsTi.tsx";
+import { crossIcon } from "../atoms/icons/iconsGi.tsx";
 
 const Cards = ({ mapToObject }: { mapToObject: Storage | object }) => {
   const { postLocal, getLocal, triggerUpdate } = useLocal();

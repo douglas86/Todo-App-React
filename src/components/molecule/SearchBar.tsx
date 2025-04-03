@@ -1,7 +1,7 @@
 import { submitButton } from "../atoms/buttons.tsx";
 import { searchField } from "../atoms/elements.tsx";
-import { searchIcon } from "../atoms/icons.tsx";
-import { rightArrowIcon } from "../atoms/iconsFa.tsx";
+import { searchIcon } from "../atoms/icons/iconsGeneral.tsx";
+import { rightArrowIcon } from "../atoms/icons/iconsFa.tsx";
 
 const SearchBar = () => {
   return (

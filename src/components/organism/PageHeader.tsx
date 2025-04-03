@@ -1,5 +1,5 @@
 import { roundButton } from "../atoms/buttons.tsx";
-import { leftArrowIcon } from "../atoms/iconsFa.tsx";
+import { leftArrowIcon } from "../atoms/icons/iconsFa.tsx";
 import { pageTitle } from "../atoms/elements.tsx";
 
 const PageHeader = ({ title }: { title: string }) => {

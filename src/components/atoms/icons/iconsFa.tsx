@@ -1,6 +1,6 @@
 import { FaArrowRight, FaArrowLeft, FaRegSave } from "react-icons/fa";
 import { FaRegCalendarAlt, FaArrowUp } from "react-icons/fa";
-import { iconsStyles } from "../../style/atomStyling.tsx";
+import { iconsStyles } from "../../../style/atomStyling.tsx";
 
 export const calendarIcon = <FaRegCalendarAlt className={iconsStyles} />;
 

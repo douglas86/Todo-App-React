@@ -1,4 +1,5 @@
 import { FieldError } from "react-hook-form";
+import { errorMessage } from "../atoms/elements.tsx";
 
 const FormInputWithLevels = ({
   name,
@@ -24,9 +25,7 @@ const FormInputWithLevels = ({
       >
         Task Name
       </label>
-      {error && (
-        <p className={`text-red-400 text-center p-2`}>This Field is Required</p>
-      )}
+      {errorMessage(error)}
     </div>
   );
 };

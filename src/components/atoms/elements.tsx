@@ -1,4 +1,5 @@
 import { ChangeEventHandler } from "react";
+import { FieldError } from "react-hook-form";
 
 export const dateTime = (
   type: "date" | "time",
@@ -20,9 +21,9 @@ export const dateTime = (
   );
 };
 
-export const errorMessage = (message: string) => {
-  return message !== "" ? (
-    <p className={`font-bold text-center text-red-400`}>{message}</p>
+export const errorMessage = (message: FieldError | undefined) => {
+  return message ? (
+    <p className={`text-red-400 text-center p-2`}>This Field is Required</p>
   ) : null;
 };
 

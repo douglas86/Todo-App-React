@@ -1,4 +1,10 @@
-import { FieldError } from "react-hook-form";
+import {
+  UseFormTrigger,
+  FieldError,
+  UseFormRegisterReturn,
+} from "react-hook-form";
+
+import { FormInputs } from "../../utils/types.tsx";
 
 export const errorMessage = (error: FieldError | undefined) => {
   return error?.message ? (
@@ -8,15 +14,28 @@ export const errorMessage = (error: FieldError | undefined) => {
   ) : null;
 };
 
-export const formInput = (name: string, reg: object) => (
-  <input
-    type="text"
-    id={name}
-    className={`block py-2.5 px-0 w-full text-lg text-green-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-blue dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer`}
-    placeholder=" "
-    {...reg}
-  />
-);
+export const formInput = (
+  name: keyof FormInputs,
+  reg: UseFormRegisterReturn,
+  trig: UseFormTrigger<FormInputs>,
+) => {
+  const { onChange, onBlur, ref } = reg;
+
+  return (
+    <input
+      type="text"
+      id={name}
+      className={`block py-2.5 px-0 w-full text-lg text-green-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-blue dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer`}
+      placeholder=" "
+      ref={ref}
+      onBlur={onBlur}
+      onChange={async (e) => {
+        await onChange(e);
+        await trig(name);
+      }}
+    />
+  );
+};
 
 export const formLabel = (htmlFor: string, name: string) => (
   <label

@@ -4,6 +4,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import FormInputWithLevels from "../molecule/FormInputWithLevels.tsx";
 import FormButton from "../molecule/FormButton.tsx";
 import useLocal from "../../hooks/useLocal.tsx";
+import { FormInputs } from "../../utils/types.tsx";
 
 // import LevelSelection from "./LevelSelection.tsx";
 // import CheckboxList from "./CheckboxList.tsx";
@@ -14,10 +15,10 @@ import useLocal from "../../hooks/useLocal.tsx";
 // import useLocal from "../../hooks/useLocal.tsx";
 // import { NewTaskError } from "../../utils/types.tsx";
 
-type Inputs = {
-  taskName: string;
-  exampleRequired: string;
-};
+// type Inputs = {
+//   taskName: string;
+//   exampleRequired: string;
+// };
 
 const Form = () => {
   // const [error, setError] = useState<NewTaskError>({ TaskError: "" });
@@ -29,7 +30,6 @@ const Form = () => {
   // TODO: form validation can be done with react hook forms
 
   // form validation: Task name
-  // TODO: input tag must not be blank
   // TODO: make sure that the title has not been used
 
   // form validation: Priority and Complexity
@@ -114,12 +114,16 @@ const Form = () => {
     register,
     handleSubmit,
     watch,
+    trigger,
     formState: { errors },
-  } = useForm<Inputs>();
+  } = useForm<FormInputs>({
+    mode: "onChange",
+  });
 
   const { keyExists } = useLocal();
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log("data", data);
+  const onSubmit: SubmitHandler<FormInputs> = (data) =>
+    console.log("data", data);
 
   console.log("watch", watch("taskName"));
   console.log("key", keyExists(watch("taskName")));
@@ -129,13 +133,14 @@ const Form = () => {
   return (
     <form className="w-full m-3 p-5" onSubmit={handleSubmit(onSubmit)}>
       <FormInputWithLevels
-        nameAttribute={`taskname`}
+        nameAttribute={`taskName`}
         nameDisplay={`Task Name`}
         reg={register("taskName", {
           required: "This field is required",
           validate: (value) => !keyExists(value) || "This task alrady exists",
         })}
         error={errors.taskName}
+        trig={trigger}
       />
 
       <FormButton />

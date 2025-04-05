@@ -122,7 +122,8 @@ const Form = () => {
   return (
     <form className="max-w-md mx-auto m-5" onSubmit={handleSubmit(onSubmit)}>
       <FormInputWithLevels
-        name={`taskname`}
+        nameAttribute={`taskname`}
+        nameDisplay={`Task Name`}
         reg={register("taskName", { required: true })}
         error={errors.taskName}
       />

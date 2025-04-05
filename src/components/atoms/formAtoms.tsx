@@ -1,9 +1,9 @@
 import { FieldError } from "react-hook-form";
 
-export const errorMessage = (message: FieldError | undefined) => {
-  return message ? (
+export const errorMessage = (error: FieldError | undefined) => {
+  return error?.message ? (
     <p className={`font-bold text-lg text-red-400 text-center p-2`}>
-      This Field is Required
+      {error.message}
     </p>
   ) : null;
 };

@@ -3,6 +3,7 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import FormInputWithLevels from "../molecule/FormInputWithLevels.tsx";
 import FormButton from "../molecule/FormButton.tsx";
+import useLocal from "../../hooks/useLocal.tsx";
 
 // import LevelSelection from "./LevelSelection.tsx";
 // import CheckboxList from "./CheckboxList.tsx";
@@ -116,16 +117,24 @@ const Form = () => {
     formState: { errors },
   } = useForm<Inputs>();
 
+  const { keyExists } = useLocal();
+
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log("data", data);
 
   console.log("watch", watch("taskName"));
+  console.log("key", keyExists(watch("taskName")));
+
+  // fhfgh
 
   return (
     <form className="w-full m-3 p-5" onSubmit={handleSubmit(onSubmit)}>
       <FormInputWithLevels
         nameAttribute={`taskname`}
         nameDisplay={`Task Name`}
-        reg={register("taskName", { required: true })}
+        reg={register("taskName", {
+          required: "This field is required",
+          validate: (value) => !keyExists(value) || "This task alrady exists",
+        })}
         error={errors.taskName}
       />
 

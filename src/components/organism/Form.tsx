@@ -16,6 +16,27 @@ const Form = () => {
   const { post, get } = useSession();
   const { postLocal, keyExists } = useLocal();
 
+  // TODO: add form validation
+  // TODO: form validation can be done with react hook forms
+
+  // form validation: Task name
+  // TODO: input tag must not be blank
+  // TODO: make sure that the title has not been used
+
+  // form validation: Priority and Complexity
+  // TODO: default levels for priority and complexity to be registered on page start
+
+  // form validation: date and time
+  // TODO: setup default for current date and time
+  // TODO: can only create date and time in future, past must be blocked
+
+  // form validation: checklists for subtasks
+  // TODO: there must be at least one task
+  // TODO: all tasks must be unique
+
+  // form validation: save task button
+  // TODO: save task button is disabled when there are errors to be fixed
+
   // save task name to session storage
   const taskName = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();

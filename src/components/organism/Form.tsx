@@ -2,6 +2,7 @@
 // import { useRedirect } from "react-admin";
 import { useForm, SubmitHandler } from "react-hook-form";
 import FormInputWithLevels from "../molecule/FormInputWithLevels.tsx";
+import FormButton from "../molecule/FormButton.tsx";
 
 // import LevelSelection from "./LevelSelection.tsx";
 // import CheckboxList from "./CheckboxList.tsx";
@@ -120,7 +121,7 @@ const Form = () => {
   console.log("watch", watch("taskName"));
 
   return (
-    <form className="max-w-md mx-auto m-5" onSubmit={handleSubmit(onSubmit)}>
+    <form className="w-full m-3 p-5" onSubmit={handleSubmit(onSubmit)}>
       <FormInputWithLevels
         nameAttribute={`taskname`}
         nameDisplay={`Task Name`}
@@ -128,21 +129,7 @@ const Form = () => {
         error={errors.taskName}
       />
 
-      <button
-        type="submit"
-        className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-      >
-        Submit
-      </button>
-
-      <a href="/">
-        <button
-          type="button"
-          className="font-bold text-red-800 bg-yellow-400 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800"
-        >
-          Cancel
-        </button>
-      </a>
+      <FormButton />
     </form>
   );
 

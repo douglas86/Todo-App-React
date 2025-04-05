@@ -1,7 +1,21 @@
 import { ReactNode, MouseEvent, MouseEventHandler } from "react";
+
 import { addIcon } from "./icons/iconsIo5.tsx";
 import { repeatIcon } from "./icons/iconsBs.tsx";
 import { saveIcon } from "./icons/iconsFa.tsx";
+
+import { formButtonStyles } from "../../style/atomStyling.tsx";
+
+export const cancelButton = (redirectURL: string) => (
+  <a href={redirectURL}>
+    <button
+      type="button"
+      className={`text-red-800 bg-yellow-400 hover:bg-yellow-800 ${formButtonStyles} focus:ring-yellow-300 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800`}
+    >
+      Cancel
+    </button>
+  </a>
+);
 
 /**
  * This button is completely round passing in the size
@@ -26,12 +40,15 @@ export const roundButton = (
   </button>
 );
 
-export const submitButton = (text: ReactNode | string) => (
+/**
+ * This button is used to conjunction with a form
+ */
+export const submitButton = () => (
   <button
-    className="p-2 bg-blue-100 hover:bg-blue-200 rounded-r-lg border-l border-slate-300"
     type="submit"
+    className={`text-white bg-blue-700 hover:bg-blue-800 ${formButtonStyles} focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800`}
   >
-    {text}
+    Submit
   </button>
 );
 

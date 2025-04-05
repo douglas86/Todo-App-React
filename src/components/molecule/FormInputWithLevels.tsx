@@ -1,5 +1,5 @@
 import { FieldError } from "react-hook-form";
-import { errorMessage, formInput, formLabel } from "../atoms/elements.tsx";
+import { errorMessage, formInput, formLabel } from "../atoms/formAtoms.tsx";
 
 const FormInputWithLevels = ({
   nameAttribute,

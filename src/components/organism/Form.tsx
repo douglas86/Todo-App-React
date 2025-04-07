@@ -5,6 +5,7 @@ import FormInputWithLevels from "../molecule/FormInputWithLevels.tsx";
 import FormButton from "../molecule/FormButton.tsx";
 import useLocal from "../../hooks/useLocal.tsx";
 import { FormInputs } from "../../utils/types.tsx";
+import { useState } from "react";
 
 // import LevelSelection from "./LevelSelection.tsx";
 // import CheckboxList from "./CheckboxList.tsx";
@@ -120,10 +121,18 @@ const Form = () => {
     mode: "onChange",
   });
 
+  const [val, setVal] = useState<number>(1);
+
   const { keyExists } = useLocal();
 
   const onSubmit: SubmitHandler<FormInputs> = (data) =>
     console.log("data", data);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    console.log("change", event.target.value);
+    setVal(parseInt(event.target.value));
+  };
 
   console.log("watch", watch("taskName"));
   console.log("key", keyExists(watch("taskName")));
@@ -142,6 +151,31 @@ const Form = () => {
         error={errors.taskName}
         trig={trigger}
       />
+
+      <div className="relative m-6">
+        <label htmlFor="labels-range-input">Priority Levels</label>
+        <input
+          id="labels-range-input"
+          type="range"
+          value={val}
+          min="1"
+          max="10"
+          onChange={handleChange}
+          className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
+        />
+        <span className="text-sm text-gray-500 dark:text-gray-400 absolute start-0 -bottom-6">
+          Min (1)
+        </span>
+        <span className="text-sm text-gray-500 dark:text-gray-400 absolute start-1/3 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6">
+          4
+        </span>
+        <span className="text-sm text-gray-500 dark:text-gray-400 absolute start-2/3 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6">
+          7
+        </span>
+        <span className="text-sm text-gray-500 dark:text-gray-400 absolute end-0 -bottom-6">
+          Max (10)
+        </span>
+      </div>
 
       <FormButton />
     </form>

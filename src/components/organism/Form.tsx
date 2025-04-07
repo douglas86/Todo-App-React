@@ -5,7 +5,7 @@ import FormInputWithLevels from "../molecule/FormInputWithLevels.tsx";
 import FormButton from "../molecule/FormButton.tsx";
 import useLocal from "../../hooks/useLocal.tsx";
 import { FormInputs } from "../../utils/types.tsx";
-import { useState } from "react";
+// import { useState, ChangeEvent } from "react";
 
 // import LevelSelection from "./LevelSelection.tsx";
 // import CheckboxList from "./CheckboxList.tsx";
@@ -115,24 +115,25 @@ const Form = () => {
     register,
     handleSubmit,
     watch,
-    trigger,
     formState: { errors },
   } = useForm<FormInputs>({
     mode: "onChange",
   });
 
-  const [val, setVal] = useState<number>(1);
+  // state to keep track of range slider value
+  // const [val, setVal] = useState<number>(1);
 
   const { keyExists } = useLocal();
 
   const onSubmit: SubmitHandler<FormInputs> = (data) =>
     console.log("data", data);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    event.preventDefault();
-    console.log("change", event.target.value);
-    setVal(parseInt(event.target.value));
-  };
+  // onChange event for range slider
+  // const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+  //   event.preventDefault();
+  //   console.log("change", event.target.value);
+  //   setVal(parseInt(event.target.value));
+  // };
 
   console.log("watch", watch("taskName"));
   console.log("key", keyExists(watch("taskName")));
@@ -141,41 +142,67 @@ const Form = () => {
 
   return (
     <form className="w-full m-3 p-5" onSubmit={handleSubmit(onSubmit)}>
-      <FormInputWithLevels
-        nameAttribute={`taskName`}
-        nameDisplay={`Task Name`}
-        reg={register("taskName", {
-          required: "This field is required",
-          validate: (value) => !keyExists(value) || "This task alrady exists",
-        })}
-        error={errors.taskName}
-        trig={trigger}
-      />
-
-      <div className="relative m-6">
-        <label htmlFor="labels-range-input">Priority Levels</label>
+      <div className={`relative z-0 w-full mb-5 group`}>
+        <label
+          htmlFor="taskName"
+          className={`peer-focus:font-medium absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6`}
+        >
+          Task Name
+        </label>
         <input
-          id="labels-range-input"
-          type="range"
-          value={val}
-          min="1"
-          max="10"
-          onChange={handleChange}
-          className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
+          type="text"
+          id="taskName"
+          placeholder=" "
+          {...register("taskName", {
+            required: "This field is required",
+            validate: (value) => keyExists(value) && "This key exists",
+          })}
+          className={`block py-2.5 px-0 w-full text-lg text-green-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-blue dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer`}
         />
-        <span className="text-sm text-gray-500 dark:text-gray-400 absolute start-0 -bottom-6">
-          Min (1)
-        </span>
-        <span className="text-sm text-gray-500 dark:text-gray-400 absolute start-1/3 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6">
-          4
-        </span>
-        <span className="text-sm text-gray-500 dark:text-gray-400 absolute start-2/3 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6">
-          7
-        </span>
-        <span className="text-sm text-gray-500 dark:text-gray-400 absolute end-0 -bottom-6">
-          Max (10)
-        </span>
+        {errors.taskName &&
+          Object.entries(errors).map(([key, value]) => (
+            <div key={key}>
+              <p>{value.message}</p>
+            </div>
+          ))}
       </div>
+
+      {/*<FormInputWithLevels*/}
+      {/*  nameAttribute={`taskName`}*/}
+      {/*  nameDisplay={`Task Name`}*/}
+      {/*  reg={register("taskName", {*/}
+      {/*    required: "This field is required",*/}
+      {/*    validate: (value) => keyExists(value) || "This task alrady exists",*/}
+      {/*  })}*/}
+      {/*  error={errors.taskName}*/}
+      {/*  trig={trigger}*/}
+      {/*/>*/}
+
+      {/*range slider from tailwind*/}
+      {/*<div className="relative m-6">*/}
+      {/*  <label htmlFor="labels-range-input">Priority Levels</label>*/}
+      {/*  <input*/}
+      {/*    id="labels-range-input"*/}
+      {/*    type="range"*/}
+      {/*    value={val}*/}
+      {/*    min="1"*/}
+      {/*    max="10"*/}
+      {/*    onChange={handleChange}*/}
+      {/*    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"*/}
+      {/*  />*/}
+      {/*  <span className="text-sm text-gray-500 dark:text-gray-400 absolute start-0 -bottom-6">*/}
+      {/*    Min (1)*/}
+      {/*  </span>*/}
+      {/*  <span className="text-sm text-gray-500 dark:text-gray-400 absolute start-1/3 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6">*/}
+      {/*    4*/}
+      {/*  </span>*/}
+      {/*  <span className="text-sm text-gray-500 dark:text-gray-400 absolute start-2/3 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6">*/}
+      {/*    7*/}
+      {/*  </span>*/}
+      {/*  <span className="text-sm text-gray-500 dark:text-gray-400 absolute end-0 -bottom-6">*/}
+      {/*    Max (10)*/}
+      {/*  </span>*/}
+      {/*</div>*/}
 
       <FormButton />
     </form>

@@ -1,4 +1,5 @@
 import { ChangeEventHandler } from "react";
+
 import { toTitleCase } from "../../utils/helpers";
 
 const RangeSlider = ({
@@ -36,6 +37,7 @@ const RangeSlider = ({
         onChange={handleChange}
       />
 
+      {/*display min and max value under slider*/}
       <div className={`flex justify-between text-lg text-gray-600 mb-1`}>
         <span>1 min</span>
         <span>10 max</span>

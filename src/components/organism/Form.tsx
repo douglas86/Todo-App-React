@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { ChangeEvent } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import FormInputWithLevels from "../molecule/FormInputWithLevels.tsx";
 import FormButton from "../molecule/FormButton.tsx";
 import useLocal from "../../hooks/useLocal.tsx";
 import { FormInputs } from "../../utils/types.tsx";
+import RangeSlider from "../molecule/RangeSlider.tsx";
 
 const Form = () => {
   const {
@@ -19,9 +20,11 @@ const Form = () => {
     },
   });
 
-  const [priority, setPriority] = useState<string>("1");
-
   const { keyExists } = useLocal();
+
+  const handlePriority = (event: ChangeEvent<HTMLInputElement>) => {
+    setValue("priority", event.target.value);
+  };
 
   const onSubmit: SubmitHandler<FormInputs> = (data) => {
     console.log("data", data);
@@ -49,36 +52,41 @@ const Form = () => {
       />
 
       {/*Range Slider*/}
-      <div className={`w-full my-6`}>
-        {/*label for range slider*/}
-        <label
-          htmlFor="volume"
-          className={`block text-lg font-medium text-gray-700 mb-2`}
-        >
-          Volume
-        </label>
+      <RangeSlider
+        title={"priority"}
+        watch={watch("priority")}
+        handleChange={handlePriority}
+      />
+      {/*<div className={`w-full my-6`}>*/}
+      {/*  /!*label for range slider*!/*/}
+      {/*  <label*/}
+      {/*    htmlFor="volume"*/}
+      {/*    className={`block text-lg font-medium text-gray-700 mb-2`}*/}
+      {/*  >*/}
+      {/*    Volume*/}
+      {/*  </label>*/}
 
-        <label className={`block text-sm font-medium text-gray-700 mb-2`}>
-          Value: {watch("priority") ?? "1"}
-        </label>
+      {/*  <label className={`block text-sm font-medium text-gray-700 mb-2`}>*/}
+      {/*    Value: {watch("priority") ?? "1"}*/}
+      {/*  </label>*/}
 
-        {/*slider*/}
-        <input
-          id="volume"
-          type="range"
-          min="1"
-          max="10"
-          value={watch("priority") ?? "1"}
-          className={`w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer accent-blue-600`}
-          onChange={(event) => setValue("priority", event.target.value)}
-        />
+      {/*  /!*slider*!/*/}
+      {/*  <input*/}
+      {/*    id="volume"*/}
+      {/*    type="range"*/}
+      {/*    min="1"*/}
+      {/*    max="10"*/}
+      {/*    value={watch("priority") ?? "1"}*/}
+      {/*    className={`w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer accent-blue-600`}*/}
+      {/*    onChange={(event) => setValue("priority", event.target.value)}*/}
+      {/*  />*/}
 
-        {/*showing min and max value*/}
-        <div className={`flex justify-between text-lg text-gray-600 mb-1`}>
-          <span>1 mini</span>
-          <span>10 maxi</span>
-        </div>
-      </div>
+      {/*  /!*showing min and max value*!/*/}
+      {/*  <div className={`flex justify-between text-lg text-gray-600 mb-1`}>*/}
+      {/*    <span>1 mini</span>*/}
+      {/*    <span>10 maxi</span>*/}
+      {/*  </div>*/}
+      {/*</div>*/}
 
       {/*form buttons*/}
       <FormButton />

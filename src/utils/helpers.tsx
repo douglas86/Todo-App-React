@@ -41,3 +41,9 @@ export const formatFriendlyDate = (isoDate: string) => {
     backgroundTextColor: "bg-gray-400",
   };
 };
+
+export const toTitleCase = (str: string) =>
+  str
+    .toLowerCase()
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1));

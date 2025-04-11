@@ -4,5 +4,6 @@ export type NewTaskError = {
 
 export type FormInputs = {
   taskName: string;
+  priority: string;
   exampleRequired: string;
 };

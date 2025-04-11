@@ -31,7 +31,7 @@ export const formLabel = (htmlFor: string, name: string) => (
   </label>
 );
 
-export const rangeSlider = () => (
+export const rangeSlider = (reg: UseFormRegisterReturn) => (
   <div className={`w-full px-4`}>
     <label
       htmlFor="volume"
@@ -45,6 +45,7 @@ export const rangeSlider = () => (
       min="1"
       max="10"
       className={`w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer accent-blue-600`}
+      {...reg}
     />
   </div>
 );

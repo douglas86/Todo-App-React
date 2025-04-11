@@ -114,7 +114,6 @@ const Form = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm<FormInputs>({
     mode: "onChange",
@@ -135,37 +134,51 @@ const Form = () => {
   //   setVal(parseInt(event.target.value));
   // };
 
-  console.log("watch", watch("taskName"));
-  console.log("key", keyExists(watch("taskName")));
+  // console.log("watch", watch("taskName"));
+  // console.log("key", keyExists(watch("taskName")));
 
   // fhfgh
 
   return (
     <form className="w-full m-3 p-5" onSubmit={handleSubmit(onSubmit)}>
-      <div className={`relative z-0 w-full mb-5 group`}>
-        <label
-          htmlFor="taskName"
-          className={`peer-focus:font-medium absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6`}
-        >
-          Task Name
-        </label>
-        <input
-          type="text"
-          id="taskName"
-          placeholder=" "
-          {...register("taskName", {
+      {/*<div className={`relative z-0 w-full mb-5 group`}>*/}
+      {/*  <label*/}
+      {/*    htmlFor="taskName"*/}
+      {/*    className={`peer-focus:font-medium absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6`}*/}
+      {/*  >*/}
+      {/*    Task Name*/}
+      {/*  </label>*/}
+      {/*  <input*/}
+      {/*    type="text"*/}
+      {/*    id="taskName"*/}
+      {/*    placeholder=" "*/}
+      {/*    {...register("taskName", {*/}
+      {/*      required: "This field is required",*/}
+      {/*      validate: (value) =>*/}
+      {/*        keyExists(value) && "This name has already been taken",*/}
+      {/*    })}*/}
+      {/*    className={`block py-2.5 px-0 w-full text-lg text-green-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-blue dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer`}*/}
+      {/*  />*/}
+      {/*  {errors.taskName &&*/}
+      {/*    Object.entries(errors).map(([key, value]) => (*/}
+      {/*      <div key={key}>*/}
+      {/*        <p>{value.message}</p>*/}
+      {/*      </div>*/}
+      {/*    ))}*/}
+      {/*</div>*/}
+
+      <FormInputWithLevels
+        nameAttribute={`taskName`}
+        nameDisplay={`Task Name`}
+        reg={{
+          ...register("taskName", {
             required: "This field is required",
-            validate: (value) => keyExists(value) && "This key exists",
-          })}
-          className={`block py-2.5 px-0 w-full text-lg text-green-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-blue dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer`}
-        />
-        {errors.taskName &&
-          Object.entries(errors).map(([key, value]) => (
-            <div key={key}>
-              <p>{value.message}</p>
-            </div>
-          ))}
-      </div>
+            validate: (value) =>
+              keyExists(value) && "This name is already taken",
+          }),
+        }}
+        error={errors.taskName}
+      />
 
       {/*<FormInputWithLevels*/}
       {/*  nameAttribute={`taskName`}*/}

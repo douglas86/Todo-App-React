@@ -5,6 +5,7 @@ import FormInputWithLevels from "../molecule/FormInputWithLevels.tsx";
 import FormButton from "../molecule/FormButton.tsx";
 import useLocal from "../../hooks/useLocal.tsx";
 import { FormInputs } from "../../utils/types.tsx";
+import { rangeSlider } from "../atoms/formAtoms.tsx";
 // import { useState, ChangeEvent } from "react";
 
 // import LevelSelection from "./LevelSelection.tsx";
@@ -30,11 +31,8 @@ const Form = () => {
   // TODO: add form validation
   // TODO: form validation can be done with react hook forms
 
-  // form validation: Task name
-  // TODO: make sure that the title has not been used
-
   // form validation: Priority and Complexity
-  // TODO: default levels for priority and complexity to be registered on page start
+  // TODO: create a range slider for priority and complexity
 
   // form validation: date and time
   // TODO: setup default for current date and time
@@ -179,6 +177,8 @@ const Form = () => {
         }}
         error={errors.taskName}
       />
+
+      {rangeSlider()}
 
       {/*<FormInputWithLevels*/}
       {/*  nameAttribute={`taskName`}*/}

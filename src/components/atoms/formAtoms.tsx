@@ -30,3 +30,21 @@ export const formLabel = (htmlFor: string, name: string) => (
     {name}
   </label>
 );
+
+export const rangeSlider = () => (
+  <div className={`w-full px-4`}>
+    <label
+      htmlFor="volume"
+      className={`block text-sm font-medium text-gray-700 mb-2`}
+    >
+      Volume
+    </label>
+    <input
+      id="volume"
+      type="range"
+      min="1"
+      max="10"
+      className={`w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer accent-blue-600`}
+    />
+  </div>
+);

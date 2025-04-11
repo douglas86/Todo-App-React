@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import FormInputWithLevels from "../molecule/FormInputWithLevels.tsx";
 import FormButton from "../molecule/FormButton.tsx";
@@ -9,10 +10,16 @@ const Form = () => {
     register,
     handleSubmit,
     watch,
+    setValue,
     formState: { errors },
   } = useForm<FormInputs>({
     mode: "onChange",
+    defaultValues: {
+      priority: "1",
+    },
   });
+
+  const [priority, setPriority] = useState<string>("1");
 
   const { keyExists } = useLocal();
 
@@ -23,6 +30,9 @@ const Form = () => {
   console.log("watch", watch());
 
   // fhfgh
+
+  // TODO: Range slider in this component
+  // TODO: break the range slider up to its own component
 
   return (
     <form className="w-full m-3 p-5" onSubmit={handleSubmit(onSubmit)}>
@@ -37,6 +47,38 @@ const Form = () => {
         })}
         error={errors.taskName}
       />
+
+      {/*Range Slider*/}
+      <div className={`w-full my-6`}>
+        {/*label for range slider*/}
+        <label
+          htmlFor="volume"
+          className={`block text-lg font-medium text-gray-700 mb-2`}
+        >
+          Volume
+        </label>
+
+        <label className={`block text-sm font-medium text-gray-700 mb-2`}>
+          Value: {watch("priority") ?? "1"}
+        </label>
+
+        {/*slider*/}
+        <input
+          id="volume"
+          type="range"
+          min="1"
+          max="10"
+          value={watch("priority") ?? "1"}
+          className={`w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer accent-blue-600`}
+          onChange={(event) => setValue("priority", event.target.value)}
+        />
+
+        {/*showing min and max value*/}
+        <div className={`flex justify-between text-lg text-gray-600 mb-1`}>
+          <span>1 mini</span>
+          <span>10 maxi</span>
+        </div>
+      </div>
 
       {/*form buttons*/}
       <FormButton />

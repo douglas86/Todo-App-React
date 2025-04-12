@@ -6,10 +6,7 @@ import useLocal from "../../hooks/useLocal.tsx";
 import { FormInputs } from "../../utils/types.tsx";
 import RangeSlider from "../molecule/RangeSlider.tsx";
 
-// date picker
-import DatePicker from "react-datepicker";
-import { isToday } from "date-fns";
-import "react-datepicker/dist/react-datepicker.css";
+import DateTimeSelector from "../molecule/DateTimeSelector.tsx";
 
 const Form = () => {
   const {
@@ -71,19 +68,8 @@ const Form = () => {
         handleChange={handleComplexity}
       />
 
-      <DatePicker
-        selected={watch("date")}
-        dateFormat="d MMMM yyyy h:mmaa"
-        onChange={(d) => setValue("date", d ? d : new Date())}
-        minDate={new Date()}
-        showTimeSelect
-        minTime={
-          isToday(watch("date"))
-            ? new Date()
-            : new Date(new Date().setHours(0, 0, 0, 0))
-        }
-        maxTime={new Date(new Date().setHours(23, 59, 59))}
-      />
+      {/*date time selector*/}
+      <DateTimeSelector watch={watch} setState={setValue} />
 
       {/*form buttons*/}
       <FormButton />

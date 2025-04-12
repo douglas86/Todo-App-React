@@ -6,4 +6,5 @@ export type FormInputs = {
   taskName: string;
   priority: string;
   complexity: string;
+  date: Date;
 };

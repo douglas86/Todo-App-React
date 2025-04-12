@@ -73,8 +73,10 @@ const CheckboxList = ({ setValue }: Props) => {
   };
 
   return (
-    <div>
-      <h2>Add Checklist for subtasks</h2>
+    <div className={`m-4`}>
+      <label className={` text-lg font-bold text-green-500`}>
+        Checklists for subtasks
+      </label>
       {checkboxes.length > 0 ? (
         <ul>
           {checkboxes.map((checkbox) => (

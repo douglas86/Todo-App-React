@@ -4,8 +4,14 @@ import CheckboxItem from "../molecule/CheckboxItem.tsx";
 
 import useSession from "../../hooks/useSession.tsx";
 import { Checkbox } from "../../utils/interfaces.tsx";
+import { UseFormSetValue } from "react-hook-form";
+import { FormInputs } from "../../utils/types.tsx";
 
-const CheckboxList = () => {
+type Props = {
+  setValue: UseFormSetValue<FormInputs>;
+};
+
+const CheckboxList = ({ setValue }: Props) => {
   const { post } = useSession();
 
   const [input, setInput] = useState<string>("");
@@ -43,21 +49,27 @@ const CheckboxList = () => {
     // only when enter is performed then save input data
     if (e.key === "Enter" && !findItemInArray(input)) {
       e.preventDefault();
+
       const newCheckbox: Checkbox = {
         id: Date.now(),
         label: input,
         checked: false,
       };
-      setCheckboxes([...checkboxes, newCheckbox]);
 
-      handleSessionStorage([...checkboxes, newCheckbox]);
+      const updatedCheckboxes = [...checkboxes, newCheckbox];
+      setCheckboxes(updatedCheckboxes);
+      handleSessionStorage(updatedCheckboxes);
 
       setInput("");
     }
   };
 
-  const handleSessionStorage = (arr: Array<object> | object) => {
+  const handleSessionStorage = (arr: Array<object> | object[]) => {
     post({ checked: arr });
+
+    // setting checkboxes value for React hook forms
+    const updatedCheckboxes = [...arr];
+    setValue("checkbox", updatedCheckboxes);
   };
 
   return (

@@ -7,6 +7,7 @@ import { FormInputs } from "../../utils/types.tsx";
 import RangeSlider from "../molecule/RangeSlider.tsx";
 
 import DateTimeSelector from "../molecule/DateTimeSelector.tsx";
+import CheckboxList from "./CheckboxList.tsx";
 
 const Form = () => {
   const {
@@ -40,6 +41,8 @@ const Form = () => {
 
   // fhfgh
 
+  console.log("watch", watch());
+
   return (
     <form className="w-full m-3 p-5" onSubmit={handleSubmit(onSubmit)}>
       {/*Task Name input with label*/}
@@ -70,6 +73,9 @@ const Form = () => {
 
       {/*date time selector*/}
       <DateTimeSelector watch={watch} setState={setValue} />
+
+      {/*checkllst*/}
+      <CheckboxList setValue={setValue} />
 
       {/*form buttons*/}
       <FormButton />

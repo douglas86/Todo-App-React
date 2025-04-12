@@ -7,4 +7,5 @@ export type FormInputs = {
   priority: string;
   complexity: string;
   date: Date;
+  checkbox: Array<object>;
 };

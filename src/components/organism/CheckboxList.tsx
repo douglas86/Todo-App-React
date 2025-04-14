@@ -2,13 +2,10 @@ import React, { useState } from "react";
 
 import CheckboxItem from "../molecule/CheckboxItem.tsx";
 
-import useSession from "../../hooks/useSession.tsx";
 import { Checkbox } from "../../utils/interfaces.tsx";
 import { ChecklistTypes } from "../../utils/types.tsx";
 
 const CheckboxList = ({ setValue }: ChecklistTypes) => {
-  const { post } = useSession();
-
   const [input, setInput] = useState<string>("");
   const [checkboxes, setCheckboxes] = useState<Checkbox[]>([]);
 
@@ -60,8 +57,6 @@ const CheckboxList = ({ setValue }: ChecklistTypes) => {
   };
 
   const handleSessionStorage = (arr: Array<object> | object[]) => {
-    post({ checked: arr });
-
     // setting checkboxes value for React hook forms
     const updatedCheckboxes = [...arr];
     setValue("checkbox", updatedCheckboxes);

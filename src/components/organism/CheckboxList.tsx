@@ -4,14 +4,9 @@ import CheckboxItem from "../molecule/CheckboxItem.tsx";
 
 import useSession from "../../hooks/useSession.tsx";
 import { Checkbox } from "../../utils/interfaces.tsx";
-import { UseFormSetValue } from "react-hook-form";
-import { FormInputs } from "../../utils/types.tsx";
+import { ChecklistTypes } from "../../utils/types.tsx";
 
-type Props = {
-  setValue: UseFormSetValue<FormInputs>;
-};
-
-const CheckboxList = ({ setValue }: Props) => {
+const CheckboxList = ({ setValue }: ChecklistTypes) => {
   const { post } = useSession();
 
   const [input, setInput] = useState<string>("");

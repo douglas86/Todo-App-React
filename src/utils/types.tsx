@@ -1,5 +1,7 @@
-export type NewTaskError = {
-  TaskError: string;
+import { UseFormSetValue } from "react-hook-form";
+
+export type ChecklistTypes = {
+  setValue: UseFormSetValue<FormInputs>;
 };
 
 export type FormInputs = {

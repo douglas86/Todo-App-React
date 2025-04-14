@@ -1,7 +1,5 @@
 import { UseFormRegisterReturn } from "react-hook-form";
 
-// import { FormInputs } from "../../utils/types.tsx";
-
 export const errorMessage = (error?: string) => {
   return error ? (
     <p className={`font-bold text-lg text-red-400 text-center p-2`}>{error}</p>

@@ -3,13 +3,13 @@ import { crossIcon } from "../atoms/icons/iconsGi.tsx";
 import { deleteIcon } from "../atoms/icons/iconsMd.tsx";
 import { tickIcon } from "../atoms/icons/iconsTi.tsx";
 
-interface CheckboxItemProps {
-  checkbox: { id: number; label: string; checked: boolean };
-  onToggle: () => void;
-  onDelete: () => void;
-}
+import { CheckboxItemsInterface } from "../../utils/interfaces.tsx";
 
-const CheckboxItem = ({ checkbox, onToggle, onDelete }: CheckboxItemProps) => {
+const CheckboxItem = ({
+  checkbox,
+  onToggle,
+  onDelete,
+}: CheckboxItemsInterface) => {
   const handleClick = () => onToggle();
 
   return (

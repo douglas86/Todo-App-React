@@ -10,7 +10,7 @@ export type ChecklistTypes = {
 };
 
 export type FormInputs = {
-  taskName: string;
+  taskName?: string;
   priority: string;
   complexity: string;
   date: Date;

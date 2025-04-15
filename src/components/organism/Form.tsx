@@ -2,7 +2,7 @@ import { ChangeEvent } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import FormInputWithLevels from "../molecule/FormInputWithLevels.tsx";
 import FormButton from "../molecule/FormButton.tsx";
-import useLocal from "../../hooks/useLocal.tsx";
+import useLocalStorage from "../../hooks/useLocalStorage.tsx";
 import { FormInputs } from "../../utils/types.tsx";
 import RangeSlider from "../molecule/RangeSlider.tsx";
 
@@ -10,6 +10,8 @@ import DateTimeSelector from "../molecule/DateTimeSelector.tsx";
 import CheckboxList from "./CheckboxList.tsx";
 
 const Form = () => {
+  const { postLocal } = useLocalStorage();
+
   const {
     register,
     handleSubmit,
@@ -25,7 +27,7 @@ const Form = () => {
     },
   });
 
-  const { keyExists } = useLocal();
+  const { keyExists } = useLocalStorage();
 
   const handlePriority = (event: ChangeEvent<HTMLInputElement>) => {
     setValue("priority", event.target.value);
@@ -36,12 +38,22 @@ const Form = () => {
   };
 
   const onSubmit: SubmitHandler<FormInputs> = (data) => {
-    console.log("data", data);
+    // store task names value to variable
+    const name = data.taskName;
+
+    // delete task name key value pairs from object
+    delete data.taskName;
+
+    // when task name is not undefined, then store an object to local storage
+    if (name !== undefined) {
+      // store to local storage using taskName value as a key
+      // and storing the rest of the data as its value
+      postLocal(name, data);
+      window.location.href = "/";
+    }
   };
 
   // fhfgh
-
-  console.log("watch", watch());
 
   return (
     <form className="w-full m-3 p-5" onSubmit={handleSubmit(onSubmit)}>

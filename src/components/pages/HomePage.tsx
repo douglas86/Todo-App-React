@@ -2,10 +2,10 @@ import SearchBar from "../molecule/SearchBar.tsx";
 import DropdownList from "../molecule/DropdownList.tsx";
 import { taskButton } from "../atoms/buttons.tsx";
 import Cards from "../organism/Cards.tsx";
-import useLocal from "../../hooks/useLocal.tsx";
+import useLocalStorage from "../../hooks/useLocalStorage.tsx";
 
 const HomePage = () => {
-  const { getLocal } = useLocal();
+  const { getLocal } = useLocalStorage();
 
   const sortList: Array<string> = [
     "Default",

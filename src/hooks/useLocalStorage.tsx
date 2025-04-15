@@ -1,7 +1,7 @@
 import { convertKeyToUsableData } from "../utils/helpers.tsx";
 import { useEffect, useState } from "react";
 
-const useLocal = () => {
+const useLocalStorage = () => {
   const parseStorage = () => {
     const entries = Object.entries(localStorage).map(([key, value]) => {
       try {
@@ -72,4 +72,4 @@ const useLocal = () => {
   return { postLocal, getLocal, keyExists, triggerUpdate };
 };
 
-export default useLocal;
+export default useLocalStorage;

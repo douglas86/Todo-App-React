@@ -6,13 +6,13 @@ import {
 import { editIcon } from "../atoms/icons/iconsCi.tsx";
 import { complexIcon } from "../atoms/icons/iconsTb.tsx";
 import { roundButton } from "../atoms/buttons.tsx";
-import useLocal from "../../hooks/useLocal.tsx";
+import useLocalStorage from "../../hooks/useLocalStorage.tsx";
 import { calendarIcon, upArrowIcon } from "../atoms/icons/iconsFa.tsx";
 import { tickIcon } from "../atoms/icons/iconsTi.tsx";
 import { crossIcon } from "../atoms/icons/iconsGi.tsx";
 
 const Cards = ({ mapToObject }: { mapToObject: Storage | object }) => {
-  const { postLocal, getLocal, triggerUpdate } = useLocal();
+  const { postLocal, getLocal, triggerUpdate } = useLocalStorage();
 
   const handleClick = (key: string) => {
     const item = getLocal(key);

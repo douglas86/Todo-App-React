@@ -13,6 +13,7 @@ export type FormInputs = {
   taskName?: string;
   priority: string;
   complexity: string;
+  checkedCard: boolean;
   date: Date;
   checkbox: Array<object>;
 };

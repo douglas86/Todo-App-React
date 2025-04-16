@@ -1,8 +1,8 @@
 import SearchBar from "../molecule/SearchBar.tsx";
 import DropdownList from "../molecule/DropdownList.tsx";
 import { taskButton } from "../atoms/buttons.tsx";
-// import Cards from "../organism/Cards.tsx";
-import Timelined from "../organism/Timeline.tsx";
+import Cards from "../organism/Cards.tsx";
+import Timeline from "../organism/Timeline.tsx";
 import useLocalStorage from "../../hooks/useLocalStorage.tsx";
 
 const HomePage = () => {
@@ -24,8 +24,6 @@ const HomePage = () => {
   // circular progress bar
   //   https://codepen.io/juhaelee/pen/GxymWP
 
-  console.log("get", getLocal());
-
   return (
     <div className="w-full min-w-[200px]">
       <div className="py-2">
@@ -36,8 +34,8 @@ const HomePage = () => {
         <DropdownList title="Category" itemsList={cetgoryList} />
       </div>
 
-      {/*<Cards mapToObject={getLocal()} />*/}
-      <Timelined />
+      <Cards mapToObject={getLocal()} />
+      <Timeline />
 
       {taskButton("Add New Task", "new")}
     </div>

@@ -23,6 +23,7 @@ const Form = () => {
     defaultValues: {
       priority: "1",
       complexity: "1",
+      checkedCard: false,
       date: new Date(),
     },
   });

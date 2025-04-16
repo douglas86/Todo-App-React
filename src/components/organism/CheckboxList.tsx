@@ -13,7 +13,7 @@ const CheckboxList = ({ setValue }: ChecklistTypes) => {
   const removeCheckbox = (id: number) => {
     const filtering = checkboxes.filter((checkbox) => checkbox.id !== id);
 
-    setCheckboxes(filtering); // update checkbox state with deleted items
+    setCheckboxes(filtering); // update the checkbox state with deleted items
     handleSessionStorage(filtering); // update checkbox in session storage with deleted items
   };
 
@@ -57,7 +57,7 @@ const CheckboxList = ({ setValue }: ChecklistTypes) => {
   };
 
   const handleSessionStorage = (arr: Array<object> | object[]) => {
-    // setting checkboxes value for React hook forms
+    // setting checkbox value for React hook forms
     const updatedCheckboxes = [...arr];
     setValue("checkbox", updatedCheckboxes);
   };
@@ -67,6 +67,8 @@ const CheckboxList = ({ setValue }: ChecklistTypes) => {
       <label className={` text-lg font-bold text-green-500`}>
         Checklists for subtasks
       </label>
+
+      {/*display items in the checkbox state*/}
       {checkboxes.length > 0 ? (
         <ul>
           {checkboxes.map((checkbox) => (
@@ -79,6 +81,7 @@ const CheckboxList = ({ setValue }: ChecklistTypes) => {
           ))}
         </ul>
       ) : (
+        // when the checkbox state is empty
         <p className={`capitalize text-center text-red-400 font-bold p-3`}>
           There are no items to display
         </p>
@@ -94,7 +97,7 @@ const CheckboxList = ({ setValue }: ChecklistTypes) => {
         onKeyDown={handleKeyDown}
       />
 
-      {/*form validation when item already exists*/}
+      {/*form validation when the item already exists*/}
       {findItemInArray(input) && (
         <p className={`text-red-400 font-bold text-center py-2 px-3`}>
           Please add another item this has been added already!

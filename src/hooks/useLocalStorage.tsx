@@ -18,7 +18,7 @@ const useLocalStorage = () => {
 
   // sets or updates the key in local storage
   const postLocal = (key: string, body: object) => {
-    return localStorage.setItem(key, JSON.stringify(body));
+    return localStorage.setItem(JSON.stringify(key), JSON.stringify(body));
   };
 
   // get a specific object from local storage based on a key
@@ -28,7 +28,7 @@ const useLocalStorage = () => {
     return key ? localStorage.getItem(key) : storageData;
   };
 
-  // fetches value from local storage based on key value
+  // fetches value from local storage based on a key value
   const keyExists = (key: string) => {
     const keys: Array<string> = [];
 
@@ -47,7 +47,7 @@ const useLocalStorage = () => {
     return findKey();
   };
 
-  // forces useEffect to update when event is triggered
+  // forces useEffect to update when an event is triggered
   const triggerUpdate = () => {
     return window.dispatchEvent(new Event("local-storage-updated"));
   };
@@ -57,7 +57,7 @@ const useLocalStorage = () => {
       setStorageData(parseStorage());
     };
 
-    // Listen to `storage` event (fired in other tabs)
+    // Listen to the ` storage ` event (fired in other tabs)
     window.addEventListener("storage", handleStorageChange);
 
     // Optional: use a custom event for same-tab updates

@@ -44,7 +44,7 @@ const Form = () => {
     // delete task name key value pairs from object
     delete data.taskName;
 
-    // when task name is not undefined, then store an object to local storage
+    // when the task name is not undefined, then store an object to local storage
     if (name !== undefined) {
       // store to local storage using taskName value as a key
       // and storing the rest of the data as its value
@@ -57,14 +57,16 @@ const Form = () => {
 
   return (
     <form className="w-full m-3 p-5" onSubmit={handleSubmit(onSubmit)}>
-      {/*Task Name input with label*/}
+      {/*Task Name input with the label*/}
       <FormInputWithLevels
         nameAttribute={`taskName`}
         nameDisplay={`Task Name`}
         reg={register("taskName", {
           required: "This field is required",
-          validate: (value) =>
-            keyExists(value) ? "This name is already taken" : true,
+          validate: (value: string | undefined) =>
+            typeof value === "string" && keyExists(value)
+              ? "This name is already taken"
+              : true,
         })}
         error={errors.taskName}
       />

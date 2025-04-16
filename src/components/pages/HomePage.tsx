@@ -1,7 +1,8 @@
 import SearchBar from "../molecule/SearchBar.tsx";
 import DropdownList from "../molecule/DropdownList.tsx";
 import { taskButton } from "../atoms/buttons.tsx";
-import Cards from "../organism/Cards.tsx";
+// import Cards from "../organism/Cards.tsx";
+import Timelined from "../organism/Timeline.tsx";
 import useLocalStorage from "../../hooks/useLocalStorage.tsx";
 
 const HomePage = () => {
@@ -35,7 +36,8 @@ const HomePage = () => {
         <DropdownList title="Category" itemsList={cetgoryList} />
       </div>
 
-      <Cards mapToObject={getLocal()} />
+      {/*<Cards mapToObject={getLocal()} />*/}
+      <Timelined />
 
       {taskButton("Add New Task", "new")}
     </div>

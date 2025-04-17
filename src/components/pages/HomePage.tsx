@@ -1,12 +1,12 @@
 import SearchBar from "../molecule/SearchBar.tsx";
 import DropdownList from "../molecule/DropdownList.tsx";
 import { taskButton } from "../atoms/buttons.tsx";
-import Cards from "../organism/Cards.tsx";
-import Timeline from "../organism/Timeline.tsx";
-import useLocalStorage from "../../hooks/useLocalStorage.tsx";
+// import Cards from "../organism/Cards.tsx";
+import Timelined from "../organism/Timelined.tsx";
+// import useLocalStorage from "../../hooks/useLocalStorage.tsx";
 
 const HomePage = () => {
-  const { getLocal } = useLocalStorage();
+  // const { getLocal } = useLocalStorage();
 
   const sortList: Array<string> = [
     "Default",
@@ -25,17 +25,17 @@ const HomePage = () => {
   //   https://codepen.io/juhaelee/pen/GxymWP
 
   return (
-    <div className="w-full min-w-[200px]">
-      <div className="py-2">
-        <SearchBar />
-      </div>
+    <div className="w-full">
+      {/*<div className="py-2">*/}
+      {/*  <SearchBar />*/}
+      {/*</div>*/}
       <div className="flex">
         <DropdownList title="Sort" itemsList={sortList} />
         <DropdownList title="Category" itemsList={cetgoryList} />
       </div>
 
-      <Cards mapToObject={getLocal()} />
-      <Timeline />
+      {/*<Cards mapToObject={getLocal()} />*/}
+      <Timelined />
 
       {taskButton("Add New Task", "new")}
     </div>

@@ -8,6 +8,8 @@ import {
   Typography,
   Avatar,
 } from "@material-tailwind/react";
+import { roundButton } from "../atoms/buttons.tsx";
+import { tickIcon } from "../atoms/icons/iconsTi.tsx";
 
 const Timelined = () => {
   // const { getLocal } = useLocalStorage();
@@ -18,15 +20,15 @@ const Timelined = () => {
     <div className="w-[32rem]">
       <Timeline>
         <TimelineItem>
-          <TimelineConnector className={`flex !w-1 bg-blue-500 ml-4`} />
+          <TimelineConnector className={`flex !w-1 bg-blue-500 ml-4.5`} />
           <TimelineHeader>
-            <TimelineIcon className="p-0">
-              <Avatar
-                size="sm"
-                src="https://docs.material-tailwind.com/img/team-1.jpg"
-                alt="user 1"
-                withBorder
-              />
+            <TimelineIcon className="p-0 bg-green-600">
+              <button
+                className={`flex w-10 h-10 justify-center items-center`}
+                onClick={() => console.log("clicked")}
+              >
+                {tickIcon}
+              </button>
             </TimelineIcon>
             <Typography variant="h5" color="blue-gray">
               Timeline Title Here.
@@ -44,13 +46,13 @@ const Timelined = () => {
         <TimelineItem>
           <TimelineConnector className={`flex !w-1 bg-blue-500 ml-4`} />
           <TimelineHeader>
-            <TimelineIcon className="p-0">
-              <Avatar
-                size="sm"
-                src="https://docs.material-tailwind.com/img/team-2.jpg"
-                alt="user 2"
-                withBorder
-              />
+            <TimelineIcon className="p-0 bg-green-600">
+              <button
+                className={`flex w-10 h-10 justify-center items-center`}
+                onClick={() => console.log("clicked")}
+              >
+                {tickIcon}
+              </button>
             </TimelineIcon>
             <Typography variant="h5" color="blue-gray">
               Timeline Title Here.
@@ -67,13 +69,13 @@ const Timelined = () => {
         </TimelineItem>
         <TimelineItem>
           <TimelineHeader>
-            <TimelineIcon className="p-0">
-              <Avatar
-                size="sm"
-                src="https://docs.material-tailwind.com/img/team-3.jpg"
-                alt="user 3"
-                withBorder
-              />
+            <TimelineIcon className="p-0 bg-green-600">
+              <button
+                className={`flex w-10 h-10 justify-center items-center`}
+                onClick={() => console.log("clicked")}
+              >
+                {tickIcon}
+              </button>
             </TimelineIcon>
             <Typography variant="h5" color="blue-gray">
               Timeline Title Here.

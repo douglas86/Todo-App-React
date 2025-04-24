@@ -7,6 +7,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { tickIcon } from "../atoms/icons/iconsTi.tsx";
+import { crossIcon } from "../atoms/icons/iconsGi.tsx";
 import React from "react";
 import {
   checkPriorityLevel,
@@ -14,6 +15,7 @@ import {
 } from "../../utils/helpers.tsx";
 import { calendarIcon, upArrowIcon } from "../atoms/icons/iconsFa.tsx";
 import { complexIcon } from "../atoms/icons/iconsTb.tsx";
+import useLocalStorage from "../../hooks/useLocalStorage.tsx";
 
 const TimelineCard = ({
   title,
@@ -24,6 +26,16 @@ const TimelineCard = ({
   value: FormInputs;
   showConnector?: boolean;
 }) => {
+  const [checked, setChecked] = React.useState(value.checkedCard);
+  const { postLocal } = useLocalStorage();
+
+  // click handler to handle toggling of if the card is checked or not
+  const handleClick = (t: string) => {
+    const toggled = !checked;
+    setChecked(toggled);
+    postLocal(t, { ...value, checkedCard: toggled });
+  };
+
   return (
     <>
       {showConnector ? (
@@ -31,12 +43,23 @@ const TimelineCard = ({
       ) : null}
       <TimelineHeader>
         <TimelineIcon className="p-0 bg-green-600">
-          <button
-            className={`flex w-10 h-10 justify-center items-center`}
-            onClick={() => console.log("clicked")}
-          >
-            {tickIcon}
-          </button>
+          {checked ? (
+            <button
+              name={title}
+              className={`flex w-10 h-10 justify-center items-center`}
+              onClick={() => handleClick(title)}
+            >
+              {tickIcon}
+            </button>
+          ) : (
+            <button
+              name={title}
+              className={`flex w-10 h-10 justify-center items-center`}
+              onClick={() => handleClick(title)}
+            >
+              {crossIcon}
+            </button>
+          )}
         </TimelineIcon>
         <Typography
           variant="h5"

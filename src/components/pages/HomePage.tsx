@@ -3,10 +3,11 @@ import DropdownList from "../molecule/DropdownList.tsx";
 import { taskButton } from "../atoms/buttons.tsx";
 // import Cards from "../organism/Cards.tsx";
 import Timelined from "../organism/Timelined.tsx";
+import { useState } from "react";
 // import useLocalStorage from "../../hooks/useLocalStorage.tsx";
 
 const HomePage = () => {
-  // const { getLocal } = useLocalStorage();
+  const [search, setSearch] = useState<string>("");
 
   const sortList: Array<string> = [
     "Default",
@@ -24,11 +25,11 @@ const HomePage = () => {
   // circular progress bar
   //   https://codepen.io/juhaelee/pen/GxymWP
 
+  console.log("search", search);
+
   return (
     <div className="w-full">
-      <div className="py-2">
-        <SearchBar />
-      </div>
+      <SearchBar search={setSearch} />
       <div className="flex">
         <DropdownList title="Sort" itemsList={sortList} />
         <DropdownList title="Category" itemsList={cetgoryList} />

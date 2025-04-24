@@ -1,6 +1,16 @@
-const SearchBar = () => {
+import React, { Dispatch, SetStateAction } from "react";
+
+const SearchBar = ({
+  search,
+}: {
+  search: Dispatch<SetStateAction<string>>;
+}) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    search(e.target.value);
+  };
+
   return (
-    <div className="w-full max-w-sm min-w-[200px]">
+    <div className="flex w-full max-w-sm min-w-[400px] justify-center">
       <div className="relative mt-2">
         <div className="absolute top-1 left-1 flex items-center">
           <button
@@ -56,6 +66,7 @@ const SearchBar = () => {
           type="text"
           className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md pr-12 pl-28 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
           placeholder="Germany..."
+          onChange={handleChange}
         />
 
         <button

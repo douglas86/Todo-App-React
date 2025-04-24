@@ -18,7 +18,6 @@ const Timelined = () => {
                 <TimelineCard
                   title={convertKeyToUsableData(key)}
                   value={value}
-                  showConnector={false}
                 />
               ) : (
                 <TimelineCard

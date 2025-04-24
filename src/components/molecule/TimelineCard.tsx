@@ -38,11 +38,17 @@ const TimelineCard = ({
 
   return (
     <>
+      {/*show connector line only if showConnector is true*/}
       {showConnector ? (
         <TimelineConnector className={`flex !w-1 bg-blue-500 ml-4.5`} />
       ) : null}
       <TimelineHeader>
-        <TimelineIcon className="p-0 bg-green-600">
+        {/*handles button by connector line*/}
+        {/*change background color based on the boolean state of the checked*/}
+        <TimelineIcon
+          className={`p-0 ${checked ? "bg-green-600" : "bg-red-500"} text-black`}
+        >
+          {/*change button icon based on the boolean state*/}
           {checked ? (
             <button
               name={title}

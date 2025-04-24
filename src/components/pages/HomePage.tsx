@@ -26,9 +26,9 @@ const HomePage = () => {
 
   return (
     <div className="w-full">
-      {/*<div className="py-2">*/}
-      {/*  <SearchBar />*/}
-      {/*</div>*/}
+      <div className="py-2">
+        <SearchBar />
+      </div>
       <div className="flex">
         <DropdownList title="Sort" itemsList={sortList} />
         <DropdownList title="Category" itemsList={cetgoryList} />

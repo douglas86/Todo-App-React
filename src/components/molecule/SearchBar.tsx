@@ -10,9 +10,6 @@ const SearchBar = ({
     search(e.target.value);
   };
 
-  // BUG: the arrow on the search is not clickable and is not showing the other itesm
-  // TODO: change Europe to actual sort categories
-
   return (
     <div className="flex w-full max-w-sm min-w-[400px] justify-center">
       <div className="relative mt-2">

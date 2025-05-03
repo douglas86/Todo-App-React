@@ -39,6 +39,11 @@ const TimelineCard = ({
     postLocal(t, { ...value, checkedCard: toggled });
   };
 
+  // click handler to edit the card
+  const handleEdit = (message: string) => {
+    console.log(`You edited ${message} card`);
+  };
+
   // click handler to delete the card
   const handleDelete = (message: string) => {
     console.log(`You deleted ${message} card`);
@@ -82,7 +87,7 @@ const TimelineCard = ({
         >
           {toTitleCase(title) || "No Title"}
         </Typography>
-        {editIcon}
+        {editIcon(() => handleEdit(title))}
         {deleteIcon(() => handleDelete(title))}
       </TimelineHeader>
       <TimelineBody className="pb-8">

@@ -39,6 +39,11 @@ const TimelineCard = ({
     postLocal(t, { ...value, checkedCard: toggled });
   };
 
+  // click handler to delete the card
+  const handleDelete = (message: string) => {
+    console.log(`You deleted ${message} card`);
+  };
+
   return (
     <>
       {/*show connector line only if showConnector is true*/}
@@ -78,7 +83,7 @@ const TimelineCard = ({
           {toTitleCase(title) || "No Title"}
         </Typography>
         {editIcon}
-        {deleteIcon()}
+        {deleteIcon(() => handleDelete(title))}
       </TimelineHeader>
       <TimelineBody className="pb-8">
         {/*show the date and time of a task*/}

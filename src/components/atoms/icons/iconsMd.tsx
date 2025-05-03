@@ -1,10 +1,15 @@
+import { MouseEvent } from "react";
 import { MdDeleteForever } from "react-icons/md";
 
 import { deleteIconStyles, iconsStyles } from "../../../style/atomStyling.tsx";
 
-export const deleteIcon = () => {
+type DeleteIconProps = {
+  clickHandler: (event: MouseEvent<HTMLButtonElement>) => void;
+};
+
+export const deleteIcon = (clickHandler: DeleteIconProps["clickHandler"]) => {
   return (
-    <button>
+    <button onClick={clickHandler}>
       <MdDeleteForever className={`${iconsStyles} ${deleteIconStyles}`} />
     </button>
   );

@@ -43,7 +43,7 @@ const TimelineCard = ({
       {showConnector ? (
         <TimelineConnector className="h-[calc(100%+1rem)] !w-[8px] bg-blue-500 mx-[3.5%]" />
       ) : null}
-      <TimelineHeader className={`items-center gap-4`}>
+      <TimelineHeader className={`items-center gap-5`}>
         {/*handles button by connector line*/}
         {/*change background color based on the boolean state of the checked*/}
         <TimelineIcon
@@ -78,7 +78,7 @@ const TimelineCard = ({
       </TimelineHeader>
       <TimelineBody className="pb-8">
         {/*show the date and time of a task*/}
-        <div className={`flex m-3`}>
+        <div className={`flex m-4`}>
           <div className={`mr-2`}>{calendarIcon}</div>
           <h3
             className={`text-lg ${formatFriendlyDate(value.date.toString()).forgroundTextColor}`}
@@ -87,7 +87,7 @@ const TimelineCard = ({
           </h3>
         </div>
         {/*priority levels*/}
-        <div className={`flex m-3`}>
+        <div className={`flex m-4`}>
           <div className={`mr-2`}>{upArrowIcon}</div>
           <h3 className={`text-lg text-gray-400`}>
             Priority: {checkPriorityLevel(parseInt(value.priority))} (
@@ -95,7 +95,7 @@ const TimelineCard = ({
           </h3>
         </div>
         {/*complex levels*/}
-        <div className={`flex m-3`}>
+        <div className={`flex m-4`}>
           <div className={`mr-2`}>{complexIcon}</div>
           <h3 className={`text-lg text-gray-400`}>
             Complexity: {checkPriorityLevel(parseInt(value.complexity))} (

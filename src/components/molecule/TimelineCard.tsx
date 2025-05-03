@@ -12,6 +12,7 @@ import React from "react";
 import {
   checkPriorityLevel,
   formatFriendlyDate,
+  toTitleCase,
 } from "../../utils/helpers.tsx";
 import { calendarIcon, upArrowIcon } from "../atoms/icons/iconsFa.tsx";
 import { complexIcon } from "../atoms/icons/iconsTb.tsx";
@@ -72,7 +73,7 @@ const TimelineCard = ({
           color="blue-gray"
           {...({} as React.ComponentProps<typeof Typography>)}
         >
-          {title || "No Title"}
+          {toTitleCase(title) || "No Title"}
         </Typography>
       </TimelineHeader>
       <TimelineBody className="pb-8">

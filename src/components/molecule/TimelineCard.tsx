@@ -17,6 +17,8 @@ import {
 import { calendarIcon, upArrowIcon } from "../atoms/icons/iconsFa.tsx";
 import { complexIcon } from "../atoms/icons/iconsTb.tsx";
 import useLocalStorage from "../../hooks/useLocalStorage.tsx";
+import { editIcon } from "../atoms/icons/iconsCi.tsx";
+import { deleteIcon } from "../atoms/icons/iconsMd.tsx";
 
 const TimelineCard = ({
   title,
@@ -75,6 +77,8 @@ const TimelineCard = ({
         >
           {toTitleCase(title) || "No Title"}
         </Typography>
+        {editIcon}
+        {deleteIcon()}
       </TimelineHeader>
       <TimelineBody className="pb-8">
         {/*show the date and time of a task*/}

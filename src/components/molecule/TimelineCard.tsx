@@ -59,13 +59,13 @@ const TimelineCard = ({
         {/*handles button by connector line*/}
         {/*change background color based on the boolean state of the checked*/}
         <TimelineIcon
-          className={`p-0 w-10 h-10 flex items-center justify-center rounded-full ${checked ? "bg-green-600" : "bg-red-500"}`}
+          className={`w-12 h-12 flex items-center justify-center rounded-full ${checked ? "bg-green-600" : "bg-red-500"}`}
         >
           {/*change button icon based on the boolean state*/}
           {checked ? (
             <button
               name={title}
-              className={`flex w-10 h-10 justify-center items-center`}
+              className={`flex justify-center items-center`}
               onClick={() => handleClick(title)}
             >
               {tickIcon}
@@ -73,7 +73,7 @@ const TimelineCard = ({
           ) : (
             <button
               name={title}
-              className={`flex w-10 h-10 justify-center items-center`}
+              className={`flex justify-center items-center`}
               onClick={() => handleClick(title)}
             >
               {crossIcon}
@@ -83,6 +83,7 @@ const TimelineCard = ({
         <Typography
           variant="h5"
           color="blue-gray"
+          className={`w-[80%]`}
           {...({} as React.ComponentProps<typeof Typography>)}
         >
           {toTitleCase(title) || "No Title"}

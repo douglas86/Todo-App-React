@@ -6,6 +6,7 @@ import {
   DialogTitle,
 } from "@headlessui/react";
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
+import useLocalStorage from "../../hooks/useLocalStorage.tsx";
 
 const ModalDialogBox = ({
   onClose,
@@ -15,10 +16,19 @@ const ModalDialogBox = ({
   title: string;
 }) => {
   const [open, setOpen] = useState(true);
+  const { deleteLocal, triggerUpdate } = useLocalStorage();
 
   const handleClose = () => {
     setOpen(false);
     onClose();
+  };
+
+  // function to delete key from localStorage
+  const handleDelete = () => {
+    setOpen(false);
+    onClose();
+    deleteLocal(title);
+    triggerUpdate();
   };
 
   return (
@@ -60,10 +70,10 @@ const ModalDialogBox = ({
             <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
               <button
                 type="button"
-                onClick={handleClose}
+                onClick={handleDelete}
                 className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-red-500 sm:ml-3 sm:w-auto"
               >
-                Deactivate
+                Delete
               </button>
               <button
                 type="button"

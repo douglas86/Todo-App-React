@@ -28,6 +28,11 @@ const useLocalStorage = () => {
     return key ? localStorage.getItem(key) : storageData;
   };
 
+  const deleteLocal = (key: string) => {
+    console.log("key", key);
+    return key ? localStorage.removeItem(JSON.stringify(key)) : storageData;
+  };
+
   // fetches value from local storage based on a key value
   const keyExists = (key: string) => {
     const keys: Array<string> = [];
@@ -69,7 +74,7 @@ const useLocalStorage = () => {
     };
   }, [storageData]);
 
-  return { postLocal, getLocal, keyExists, triggerUpdate };
+  return { postLocal, getLocal, deleteLocal, keyExists, triggerUpdate };
 };
 
 export default useLocalStorage;

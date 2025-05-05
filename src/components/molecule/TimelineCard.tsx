@@ -52,7 +52,9 @@ const TimelineCard = ({
   return (
     <>
       {/*show dialog box for deleting a card*/}
-      {showModal && <ModalDialogBox onClose={() => setShowModal(false)} />}
+      {showModal && (
+        <ModalDialogBox onClose={() => setShowModal(false)} title={title} />
+      )}
       {/*show connector line only if showConnector is true*/}
       {showConnector ? (
         <TimelineConnector className="h-[calc(100%+1rem)] !w-[8px] bg-blue-500 mx-[3.5%]" />

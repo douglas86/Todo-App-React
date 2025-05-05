@@ -7,7 +7,13 @@ import {
 } from "@headlessui/react";
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 
-const ModalDialogBox = ({ onClose }: { onClose: () => void }) => {
+const ModalDialogBox = ({
+  onClose,
+  title,
+}: {
+  onClose: () => void;
+  title: string;
+}) => {
   const [open, setOpen] = useState(true);
 
   const handleClose = () => {
@@ -41,13 +47,11 @@ const ModalDialogBox = ({ onClose }: { onClose: () => void }) => {
                     as="h3"
                     className="text-base font-semibold text-gray-900"
                   >
-                    Deactivate account
+                    Delete card?
                   </DialogTitle>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
-                      Are you sure you want to deactivate your account? All of
-                      your data will be permanently removed. This action cannot
-                      be undone.
+                      Are you sure that you want to delete the "{title}" card?
                     </p>
                   </div>
                 </div>

@@ -8,7 +8,7 @@ import {
 } from "@material-tailwind/react";
 import { tickIcon } from "../atoms/icons/iconsTi.tsx";
 import { crossIcon } from "../atoms/icons/iconsGi.tsx";
-import React from "react";
+import React, { useState } from "react";
 import {
   checkPriorityLevel,
   formatFriendlyDate,
@@ -19,6 +19,7 @@ import { complexIcon } from "../atoms/icons/iconsTb.tsx";
 import useLocalStorage from "../../hooks/useLocalStorage.tsx";
 import { editIcon } from "../atoms/icons/iconsCi.tsx";
 import { deleteIcon } from "../atoms/icons/iconsMd.tsx";
+import ModalDialogBox from "../organism/ModalDialogBox.tsx";
 
 const TimelineCard = ({
   title,
@@ -29,7 +30,8 @@ const TimelineCard = ({
   value: FormInputs;
   showConnector?: boolean;
 }) => {
-  const [checked, setChecked] = React.useState(value.checkedCard);
+  const [checked, setChecked] = useState(value.checkedCard);
+  const [showModal, setShowModal] = useState(false);
   const { postLocal } = useLocalStorage();
 
   // click handler to handle toggling of if the card is checked or not
@@ -45,12 +47,12 @@ const TimelineCard = ({
   };
 
   // click handler to delete the card
-  const handleDelete = (message: string) => {
-    console.log(`You deleted ${message} card`);
-  };
+  const handleDelete = () => setShowModal(true);
 
   return (
     <>
+      {/*show dialog box for deleting a card*/}
+      {showModal && <ModalDialogBox onClose={() => setShowModal(false)} />}
       {/*show connector line only if showConnector is true*/}
       {showConnector ? (
         <TimelineConnector className="h-[calc(100%+1rem)] !w-[8px] bg-blue-500 mx-[3.5%]" />
@@ -89,7 +91,7 @@ const TimelineCard = ({
           {toTitleCase(title) || "No Title"}
         </Typography>
         {editIcon(() => handleEdit(title))}
-        {deleteIcon(() => handleDelete(title))}
+        {deleteIcon(() => handleDelete())}
       </TimelineHeader>
       <TimelineBody className="pb-8">
         {/*show the date and time of a task*/}

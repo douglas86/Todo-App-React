@@ -57,7 +57,10 @@ const Form = () => {
   // fhfgh
 
   return (
-    <form className="w-full m-3 p-5" onSubmit={handleSubmit(onSubmit)}>
+    <form
+      className="w-[80%] m-auto p-5 justify-center"
+      onSubmit={handleSubmit(onSubmit)}
+    >
       {/*Task Name input with the label*/}
       <FormInputWithLevels
         nameAttribute={`taskName`}

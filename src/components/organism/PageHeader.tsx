@@ -10,8 +10,10 @@ const PageHeader = ({ title }: { title: string }) => {
   };
 
   return (
-    <div className="flex">
-      <a href="/">{roundButton(10, leftArrowIcon(), () => handleClick)}</a>
+    <div className="flex justify-center items-center mx-5">
+      <a href="/" className="mr-3">
+        {roundButton(10, leftArrowIcon(), () => handleClick)}
+      </a>
       {pageTitle(title)}
     </div>
   );

@@ -24,7 +24,7 @@ const CheckboxItem = ({
 
       <label className="w-[60%] capitalize">{checkbox.label}</label>
       <div className="flex justify-center w-[20%]">
-        {roundButton(8, deleteIcon, onDelete, "red-400")}
+        {roundButton(8, deleteIcon(onDelete), onDelete, "red-200")}
       </div>
     </li>
   );

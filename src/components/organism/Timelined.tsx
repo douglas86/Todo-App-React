@@ -9,8 +9,8 @@ const Timelined = () => {
   const entries: [string, FormInputs][] = Object.entries(getLocal());
 
   return (
-    <div className="w-[32rem] p-3 my-5">
-      <Timeline>
+    <div className="p-3 my-5">
+      <Timeline className="flex justify-center m-auto">
         {entries.map(([key, value], index) => (
           <TimelineItem key={key}>
             <>

@@ -50,7 +50,7 @@ const TimelineCard = ({
   const handleDelete = () => setShowModal(true);
 
   return (
-    <>
+    <div className="m-auto">
       {/*show dialog box for deleting a card*/}
       {showModal && (
         <ModalDialogBox onClose={() => setShowModal(false)} title={title} />
@@ -59,7 +59,7 @@ const TimelineCard = ({
       {showConnector ? (
         <TimelineConnector className="h-[calc(100%+1rem)] !w-[8px] bg-blue-500 mx-[3.5%]" />
       ) : null}
-      <TimelineHeader className={`items-center gap-5`}>
+      <TimelineHeader className={`items-center gap-5 w-full`}>
         {/*handles button by connector line*/}
         {/*change background color based on the boolean state of the checked*/}
         <TimelineIcon
@@ -84,16 +84,20 @@ const TimelineCard = ({
             </button>
           )}
         </TimelineIcon>
-        <Typography
-          variant="h5"
-          color="blue-gray"
-          className={`w-[80%]`}
-          {...({} as React.ComponentProps<typeof Typography>)}
-        >
-          {toTitleCase(title) || "No Title"}
-        </Typography>
-        {editIcon(() => handleEdit(title))}
-        {deleteIcon(() => handleDelete())}
+        <div className="flex justify-between items-center w-[80%]">
+          <Typography
+            variant="h5"
+            color="blue-gray"
+            className={`w-[80%]`}
+            {...({} as React.ComponentProps<typeof Typography>)}
+          >
+            {toTitleCase(title) || "No Title"}
+          </Typography>
+          <div className={`flex w-[50%] items-center gap-5`}>
+            {editIcon(() => handleEdit(title))}
+            {deleteIcon(() => handleDelete())}
+          </div>
+        </div>
       </TimelineHeader>
       <TimelineBody className="pb-8">
         {/*show the date and time of a task*/}
@@ -122,7 +126,7 @@ const TimelineCard = ({
           </h3>
         </div>
       </TimelineBody>
-    </>
+    </div>
   );
 };
 

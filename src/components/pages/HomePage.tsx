@@ -27,7 +27,7 @@ const HomePage = () => {
   // console.log("search", search);
 
   return (
-    <div className="w-full">
+    <div className="w-[80%]">
       {/*<SearchBar search={setSearch} />*/}
       {/*<div className="flex">*/}
       {/*  <DropdownList title="Sort" itemsList={sortList} />*/}
